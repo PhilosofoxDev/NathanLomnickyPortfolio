@@ -1,6 +1,7 @@
 @font-face {
-  font-family: Doto;
-  src: url("../src/assets/fonts/Doto-SemiBold.ttf");
+  font-family: DotoBold;
+  src: url("../src/assets/fonts/Doto-ExtraBold.ttf");
+
 }
 @import "tailwindcss";
 
@@ -10,5 +11,5 @@
   --color-siteBg: #f4f1eF;
   --color-siteGreen: #698c61;
   --color-alternateBgBlue: #dbeeff;
-  --font-doto: Doto, "sans-serif";
+  --font-dotoBold: DotoBold, "sans-serif";
 }

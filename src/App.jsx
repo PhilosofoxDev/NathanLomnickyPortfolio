@@ -4,10 +4,10 @@ import Window from "./Components/mainwindow"
 
 function App() {
   return (
-    <>
+    <div>
       <NavBar />
       <Window />
-    </>
+    </div>
   )
 }
 
