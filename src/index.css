@@ -1,7 +1,16 @@
 @font-face {
   font-family: DotoBold;
   src: url("../src/assets/fonts/Doto-ExtraBold.ttf");
+}
 
+@font-face {
+  font-family: Outfit;
+  src: url("../src/assets/fonts/Outfit-Regular.ttf");
+}
+
+@font-face {
+  font-family: OutfitBold;
+  src: url("../src/assets/fonts/Outfit-Bold.ttf");
 }
 @import "tailwindcss";
 
@@ -12,4 +21,6 @@
   --color-siteGreen: #698c61;
   --color-alternateBgBlue: #dbeeff;
   --font-dotoBold: DotoBold, "sans-serif";
+  --font-outfit: Outfit, "sans-serif";
+  --font-outfitBold: OutfitBold, "sans-serif";
 }
