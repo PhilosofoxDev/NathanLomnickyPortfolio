@@ -1,9 +1,17 @@
-import "tailwindcss"
-import { useState } from "react"
-import Window from "./mainwindow"
-import AboutWindow from "./aboutWindow"
-import houseIcon from "../assets/images/PixelArtHouse.png"
-import clipboardIcon from "../assets/images/Clipboard.png"
+import "tailwindcss";
+import { useState } from "react";
+import Window from "./mainwindow";
+import AboutWindow from "./aboutWindow";
+import WorkWindow from "./workWindow";
+import ContactWindow from "./contactWindow";
+import LinksWindow from "./linksWindow";
+import MiscWindow from "./miscWindow";
+import houseIcon from "../assets/images/PixelArtHouse.png";
+import clipboardIcon from "../assets/images/Clipboard.png";
+import App from "../App";
+import React from "react";
+import ReactDOM from 'react-dom';
+import Draggable from 'react-draggable';
 
 export default function Shortcuts() {
     const [homeIsOpen, homeSetIsOpen] = useState(true)
@@ -17,46 +25,46 @@ export default function Shortcuts() {
         <div class="flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black text-md z-100"> {/*Left Bar (SHOULD BE ON TOP (highest z-order)*/}
             <div class="mt-2 mr-9"> {/*Left Icon Container*/}
                 <div>
-                    <button onClick={() => homeSetIsOpen(true)} class="hover:bg-blue-300/60">
+                    <button onDoubleClick={() => homeSetIsOpen(true)} class="hover:bg-blue-300/60">
                         <img class="max-w-20" src={houseIcon} alt="HomeIcon"></img>
                         <h1>Home</h1>
                     </button>
-                    <Window homeOpen={homeIsOpen} homeOnClose={() => homeSetIsOpen(false)} />
+                    <Window class="select-none" homeOpen={homeIsOpen} homeOnClose={() => homeSetIsOpen(false)} />
                 </div>
                 <div class="mt-2">
-                    <button onClick={() => aboutSetIsOpen(true)} class="hover:bg-blue-300/60">
+                    <button onDoubleClick={() => aboutSetIsOpen(true)} class="hover:bg-blue-300/60">
                         <img class="max-w-20" src={clipboardIcon} alt="AboutIcon"></img> {/*Add top margin to every element after first one*/}
                         <h1>About</h1>
                     </button>
                     <AboutWindow aboutOpen={aboutIsOpen} aboutOnClose={() => aboutSetIsOpen(false)} />
                 </div>
                 <div class="mt-2">
-                    <button onClick={() => workSetIsOpen(true)} class="hover:bg-blue-300/60">
+                    <button onDoubleClick={() => workSetIsOpen(true)} class="hover:bg-blue-300/60">
                         <img class="max-w-20" src={houseIcon} alt="FolderIcon"></img>
                         <h1>Work</h1>
                     </button>
-                    <AboutWindow workOpen={workIsOpen} workOnClose={() => workSetIsOpen(false)} />
+                    <WorkWindow workOpen={workIsOpen} workOnClose={() => workSetIsOpen(false)} />
                 </div>
                 <div class="mt-2">
-                    <button onClick={() => contactSetIsOpen(true)} class="hover:bg-blue-300/60">
+                    <button onDoubleClick={() => contactSetIsOpen(true)} class="hover:bg-blue-300/60">
                         <img class="max-w-20" src={houseIcon} alt="Envelope/Phone Icon"></img>
                         <h1>Contact</h1>
                     </button>
-                    <AboutWindow contactOpen={contactIsOpen} contactOnClose={() => contactSetIsOpen(false)} />
+                    <ContactWindow contactOpen={contactIsOpen} contactOnClose={() => contactSetIsOpen(false)} />
                 </div>
                 <div class="mt-2">
-                    <button onClick={() => linksSetIsOpen(true)} class="hover:bg-blue-300/60">
+                    <button onDoubleClick={() => linksSetIsOpen(true)} class="hover:bg-blue-300/60">
                         <img class="max-w-20" src={houseIcon} alt="ChainlinkIcon"></img>
                         <h1>Links</h1>
                     </button>
-                    <AboutWindow linksOpen={linksIsOpen} linksOnClose={() => linksSetIsOpen(false)} />
+                    <LinksWindow linksOpen={linksIsOpen} linksOnClose={() => linksSetIsOpen(false)} />
                 </div>
-                <div onClick={() => miscSetIsOpen(true)} class="mt-2">
+                <div onDoubleClick={() => miscSetIsOpen(true)} class="mt-2">
                     <button class="hover:bg-blue-300/60">
                         <img class="max-w-20" src={houseIcon} alt="RecycleBinIcon"></img>
                         <h1>Misc</h1>
                     </button>
-                    <AboutWindow miscOpen={miscIsOpen} miscOnClose={() => miscSetIsOpen(false)} />
+                    <MiscWindow miscOpen={miscIsOpen} miscOnClose={() => miscSetIsOpen(false)} />
                 </div>
             </div>
         </div>
