@@ -3,12 +3,13 @@ import Shortcuts from "./Components/desktopShortcuts";
 import Ground from "./Components/bottomGround";
 import AboutWindow from "./Components/aboutWindow";
 import React from "react";
+import Draggable from "react-draggable";
 
 function App() {
   return (
-    <div class="select-none">
+    <div className="select-none">
       <Shortcuts/>
-      <div class="flex absolute items-end justify-start w-screen h-screen">
+      <div className="flex absolute items-end justify-start w-screen h-screen">
         <Ground/>
       </div>
     </div>
