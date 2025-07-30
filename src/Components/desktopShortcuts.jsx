@@ -273,7 +273,7 @@ export default function Shortcuts() {
                 alt="AboutIcon"
               ></img>{" "}
               {/*Add top margin to every element after first one*/}
-              <h1>Mute</h1> {/*Maybed/Maybe not have text*/}
+              <h1>Mute</h1> {/*Maybe/Maybe not have text*/}
             </button>
           </div>
         </div>
