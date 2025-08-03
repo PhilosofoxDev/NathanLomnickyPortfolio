@@ -8,10 +8,6 @@ import _default from "tailwindcss/colors";
   /* import avatar from "../assets/images/Avatar.png"  Avatar image import*/
 }
 
-const HOME_WINDOW_STYLES = {
-  transform: `translate(86%, 75%)`,
-};
-
 class DragCompIndex {
   static index = 0;
   static updateIndex() {
@@ -26,10 +22,7 @@ export default function Window({ homeOpen, homeOnClose }) {
         homeOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >
-      <div
-        style={HOME_WINDOW_STYLES}
-        className="absolute shrink bg-windowBox mb-15 w-205 h-130 drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 outline-black z-100"
-      >
+      <div className="absolute shrink bg-windowBox mb-15 w-205 h-130 drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 outline-black z-100">
         {" "}
         {/*Change color to whatever works*/}
         <div className="flex w-full items-center bg-siteGreen h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2">

@@ -77,112 +77,118 @@ export default function Shortcuts() {
     DragCompIndex.updateIndex();
   };
 
-  const nodeRef = useRef(null);
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const workRef = useRef(null);
+  const contactRef = useRef(null);
+  const linksRef = useRef(null);
+  const miscRef = useRef(null);
   return (
-    <>
-      <div className="flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black text-md">
-        {" "}
-        {/*Left Bar (SHOULD BE ON TOP (highest z-order)*/}
-        <div className="mt-2 mr-9 z-100">
-          {" "}
-          {/*Left Icon Container*/}
-          <div className="Winows">
-            <Draggable
-              onStart={homePrioritize}
-              onStop={homeDeprioritize}
-              nodeRef={nodeRef}
-              offsetParent={document.body}
-            >
-              <div style={{ zIndex: homeCurrentZIndex, position: "relative" }}>
-                <div ref={nodeRef}>
-                  <Window
-                    onDoubleClick={console.log(DragCompIndex.index)}
-                    className="relative select-none z-50"
-                    homeOpen={homeIsOpen}
-                    homeOnClose={() => homeSetIsOpen(false)}
-                  />
-                </div>
-              </div>
-            </Draggable>
-            <Draggable
-              onStart={AboutPrioritize}
-              onStop={AboutDeprioritize}
-              nodeRef={nodeRef}
-              offsetParent={document.body}
-            >
-              <div style={{ zIndex: aboutCurrentZIndex, position: "relative" }}>
-                <div ref={nodeRef}>
-                  <AboutWindow
-                    aboutOpen={aboutIsOpen}
-                    aboutOnClose={() => aboutSetIsOpen(false)}
-                  />
-                </div>
-              </div>
-            </Draggable>
-            <Draggable
-              onStart={WorkPrioritize}
-              onStop={WorkDeprioritize}
-              nodeRef={nodeRef}
-              offsetParent={document.body}
-            >
-              <div style={{ zIndex: workCurrentZIndex, position: "relative" }}>
-                <div ref={nodeRef}>
-                  <WorkWindow
-                    workOpen={workIsOpen}
-                    workOnClose={() => workSetIsOpen(false)}
-                  />
-                </div>
-              </div>
-            </Draggable>
-            <Draggable
-              onStart={ContactPrioritize}
-              onStop={ContactDeprioritize}
-              nodeRef={nodeRef}
-              offsetParent={document.body}
-            >
-              <div
-                style={{ zIndex: contactCurrentZIndex, position: "relative" }}
-              >
-                <div ref={nodeRef}>
-                  <ContactWindow
-                    contactOpen={contactIsOpen}
-                    contactOnClose={() => contactSetIsOpen(false)}
-                  />
-                </div>
-              </div>
-            </Draggable>
-            <Draggable
-              onStart={LinksPrioritize}
-              onStop={LinksDeprioritize}
-              nodeRef={nodeRef}
-              offsetParent={document.body}
-            >
-              <div style={{ zIndex: linksCurrentZIndex, position: "relative" }}>
-                <div ref={nodeRef}>
-                  <LinksWindow
-                    linksOpen={linksIsOpen}
-                    linksOnClose={() => linksSetIsOpen(false)}
-                  />
-                </div>
-              </div>
-            </Draggable>
-            <Draggable
-              onStart={MiscPrioritize}
-              onStop={MiscDeprioritize}
-              nodeRef={nodeRef}
-              offsetParent={document.body}
-            >
-              <div style={{ zIndex: miscCurrentZIndex, position: "relative" }}>
-                <div ref={nodeRef}>
-                  <MiscWindow
-                    miscOpen={miscIsOpen}
-                    miscOnClose={() => miscSetIsOpen(false)}
-                  />
-                </div>
-              </div>
-            </Draggable>
+    <div>
+      <div
+        className="absolute inset-0 h-screen w-screen"
+        style={{ overflow: "hidden" }}
+      >
+        <Draggable
+          bounds="parent"
+          onStart={homePrioritize}
+          onStop={homeDeprioritize}
+          nodeRef={homeRef}
+          defaultPosition={{
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+          }}
+        >
+          <div
+            ref={homeRef}
+            style={{
+              zIndex: homeCurrentZIndex,
+              position: "absolute",
+            }}
+          >
+            <Window
+              onDoubleClick={console.log(DragCompIndex.index)}
+              className="relative select-none z-100"
+              homeOpen={homeIsOpen}
+              homeOnClose={() => homeSetIsOpen(false)}
+            />
           </div>
-          <div className="">
+        </Draggable>
+
+        <Draggable
+          onStart={AboutPrioritize}
+          onStop={AboutDeprioritize}
+          nodeRef={aboutRef}
+        >
+          <div style={{ zIndex: aboutCurrentZIndex, position: "relative" }}>
+            <div ref={aboutRef}>
+              <AboutWindow
+                aboutOpen={aboutIsOpen}
+                aboutOnClose={() => aboutSetIsOpen(false)}
+              />
+            </div>
+          </div>
+        </Draggable>
+        <Draggable
+          onStart={WorkPrioritize}
+          onStop={WorkDeprioritize}
+          nodeRef={workRef}
+        >
+          <div style={{ zIndex: workCurrentZIndex, position: "relative" }}>
+            <div ref={workRef}>
+              <WorkWindow
+                workOpen={workIsOpen}
+                workOnClose={() => workSetIsOpen(false)}
+              />
+            </div>
+          </div>
+        </Draggable>
+        <Draggable
+          onStart={ContactPrioritize}
+          onStop={ContactDeprioritize}
+          nodeRef={contactRef}
+        >
+          <div style={{ zIndex: contactCurrentZIndex, position: "relative" }}>
+            <div ref={contactRef}>
+              <ContactWindow
+                contactOpen={contactIsOpen}
+                contactOnClose={() => contactSetIsOpen(false)}
+              />
+            </div>
+          </div>
+        </Draggable>
+        <Draggable
+          onStart={LinksPrioritize}
+          onStop={LinksDeprioritize}
+          nodeRef={linksRef}
+        >
+          <div style={{ zIndex: linksCurrentZIndex, position: "relative" }}>
+            <div ref={linksRef}>
+              <LinksWindow
+                linksOpen={linksIsOpen}
+                linksOnClose={() => linksSetIsOpen(false)}
+              />
+            </div>
+          </div>
+        </Draggable>
+        <Draggable
+          onStart={MiscPrioritize}
+          onStop={MiscDeprioritize}
+          nodeRef={miscRef}
+        >
+          <div style={{ zIndex: miscCurrentZIndex, position: "relative" }}>
+            <div ref={miscRef}>
+              <MiscWindow
+                miscOpen={miscIsOpen}
+                miscOnClose={() => miscSetIsOpen(false)}
+              />
+            </div>
+          </div>
+        </Draggable>
+      </div>
+      <div className="flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black text-md">
+        <div className="mt-2 mr-9">
+          <div>
             <button
               onDoubleClick={() => homeSetIsOpen(true)}
               className="hover:bg-blue-300/60"
@@ -278,6 +284,6 @@ export default function Shortcuts() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
