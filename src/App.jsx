@@ -11,7 +11,9 @@ function App() {
       <div className="flex absolute items-end justify-start w-screen h-screen">
         <Ground />
       </div>
-      <Shortcuts />
+      <div className="">
+        <Shortcuts />
+      </div>
     </div>
   );
 }
