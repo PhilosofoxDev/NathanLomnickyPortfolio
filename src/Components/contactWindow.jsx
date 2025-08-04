@@ -2,10 +2,6 @@ import "tailwindcss";
 import React from "react";
 import Draggable from "react-draggable";
 
-const CONTACT_WINDOW_STYLES = {
-  transform: `translate(55%, 55%)`,
-};
-
 export default function ContactWindow({ contactOpen, contactOnClose }) {
   return (
     <div
@@ -13,10 +9,7 @@ export default function ContactWindow({ contactOpen, contactOnClose }) {
         contactOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >
-      <div
-        style={CONTACT_WINDOW_STYLES}
-        className="absolute bg-windowBox mb-15 w-205 h-130 drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 outline-black z-20"
-      >
+      <div className="absolute bg-windowBox mb-15 w-205 h-130 drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 outline-black z-20">
         {" "}
         {/*Change color to whatever works*/}
         <div className="flex w-full bg-siteGreen h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2">

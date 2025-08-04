@@ -14,7 +14,7 @@ import ReactDOM from "react-dom";
 import Draggable from "react-draggable";
 
 class DragCompIndex {
-  static index = 0;
+  static index = 10;
   static updateIndex() {
     DragCompIndex.index++;
   }
@@ -107,7 +107,6 @@ export default function Shortcuts() {
             }}
           >
             <Window
-              onDoubleClick={console.log(DragCompIndex.index)}
               className="relative select-none z-100"
               homeOpen={homeIsOpen}
               homeOnClose={() => homeSetIsOpen(false)}
@@ -116,17 +115,24 @@ export default function Shortcuts() {
         </Draggable>
 
         <Draggable
+          bounds="parent"
           onStart={AboutPrioritize}
           onStop={AboutDeprioritize}
           nodeRef={aboutRef}
+          defaultPosition={{
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+          }}
         >
-          <div style={{ zIndex: aboutCurrentZIndex, position: "relative" }}>
-            <div ref={aboutRef}>
-              <AboutWindow
-                aboutOpen={aboutIsOpen}
-                aboutOnClose={() => aboutSetIsOpen(false)}
-              />
-            </div>
+          <div
+            ref={aboutRef}
+            style={{ zIndex: aboutCurrentZIndex, position: "absolute" }}
+          >
+            <AboutWindow
+              className="relative select-none z-100"
+              aboutOpen={aboutIsOpen}
+              aboutOnClose={() => aboutSetIsOpen(false)}
+            />
           </div>
         </Draggable>
         <Draggable
