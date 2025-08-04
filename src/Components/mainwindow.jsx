@@ -4,17 +4,6 @@ import ReactDOM from "react-dom";
 import Draggable from "react-draggable";
 import _default from "tailwindcss/colors";
 
-{
-  /* import avatar from "../assets/images/Avatar.png"  Avatar image import*/
-}
-
-class DragCompIndex {
-  static index = 0;
-  static updateIndex() {
-    DragCompIndex.index;
-  }
-}
-
 export default function Window({ homeOpen, homeOnClose }) {
   return (
     <div
@@ -47,13 +36,14 @@ export default function Window({ homeOpen, homeOnClose }) {
           <h2 className="text-3xl mb-20 font-outfit self-center">
             Game Designer, Developer, Creator
           </h2>
-          <h2 className="text-2xl font-outfit self-center mr-5 ml-5">
-            <span className="font-outfitBold">Welcome</span> to my site!{" "}
-            <span className="font-outfitBold">Double Click</span> on the
-            different <span className="font-outfitBold">Desktop Icons</span> to
-            navigate.
-          </h2>
-          {/*<img className="absolute max-w-45 mb-18 ml-1 z-[-1]" src={avatar}></img>      Avatar Image test*/}
+          <div className="text-center">
+            <h2 className="text-2xl font-outfit mr-5 ml-5">
+              <span className="font-outfitBold">Welcome</span> to my site!{" "}
+              <span className="font-outfitBold">Double Click</span> on the
+              different <span className="font-outfitBold">Desktop Icons</span>{" "}
+              to navigate.
+            </h2>
+          </div>
         </div>
       </div>
     </div>
