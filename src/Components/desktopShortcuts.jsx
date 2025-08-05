@@ -14,7 +14,7 @@ import ReactDOM from "react-dom";
 import Draggable from "react-draggable";
 
 class DragCompIndex {
-  static index = 0;
+  static index = 10;
   static updateIndex() {
     DragCompIndex.index++;
   }
@@ -37,6 +37,7 @@ export default function Shortcuts() {
 
   const homePrioritize = () => {
     homeSetZIndex(DragCompIndex.index);
+    DragCompIndex.updateIndex();
   };
   const homeDeprioritize = () => {
     DragCompIndex.updateIndex();
@@ -44,6 +45,7 @@ export default function Shortcuts() {
 
   const AboutPrioritize = () => {
     aboutSetZIndex(DragCompIndex.index);
+    DragCompIndex.updateIndex();
   };
   const AboutDeprioritize = () => {
     DragCompIndex.updateIndex();
@@ -51,6 +53,7 @@ export default function Shortcuts() {
 
   const WorkPrioritize = () => {
     workSetZIndex(DragCompIndex.index);
+    DragCompIndex.updateIndex();
   };
   const WorkDeprioritize = () => {
     DragCompIndex.updateIndex();
@@ -77,114 +80,157 @@ export default function Shortcuts() {
     DragCompIndex.updateIndex();
   };
 
-  const nodeRef = useRef(null);
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const workRef = useRef(null);
+  const contactRef = useRef(null);
+  const linksRef = useRef(null);
+  const miscRef = useRef(null);
   return (
-    <>
-      <div className="flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black text-md">
-        {" "}
-        {/*Left Bar (SHOULD BE ON TOP (highest z-order)*/}
-        <div className="mt-2 mr-9 z-100">
-          {" "}
-          {/*Left Icon Container*/}
-          <div className="Winows">
-            <Draggable
-              onStart={homePrioritize}
-              onStop={homeDeprioritize}
-              nodeRef={nodeRef}
-              offsetParent={document.body}
-            >
-              <div style={{ zIndex: homeCurrentZIndex, position: "relative" }}>
-                <div ref={nodeRef}>
-                  <Window
-                    onDoubleClick={console.log(DragCompIndex.index)}
-                    className="relative select-none z-50"
-                    homeOpen={homeIsOpen}
-                    homeOnClose={() => homeSetIsOpen(false)}
-                  />
-                </div>
-              </div>
-            </Draggable>
-            <Draggable
-              onStart={AboutPrioritize}
-              onStop={AboutDeprioritize}
-              nodeRef={nodeRef}
-              offsetParent={document.body}
-            >
-              <div style={{ zIndex: aboutCurrentZIndex, position: "relative" }}>
-                <div ref={nodeRef}>
-                  <AboutWindow
-                    aboutOpen={aboutIsOpen}
-                    aboutOnClose={() => aboutSetIsOpen(false)}
-                  />
-                </div>
-              </div>
-            </Draggable>
-            <Draggable
-              onStart={WorkPrioritize}
-              onStop={WorkDeprioritize}
-              nodeRef={nodeRef}
-              offsetParent={document.body}
-            >
-              <div style={{ zIndex: workCurrentZIndex, position: "relative" }}>
-                <div ref={nodeRef}>
-                  <WorkWindow
-                    workOpen={workIsOpen}
-                    workOnClose={() => workSetIsOpen(false)}
-                  />
-                </div>
-              </div>
-            </Draggable>
-            <Draggable
-              onStart={ContactPrioritize}
-              onStop={ContactDeprioritize}
-              nodeRef={nodeRef}
-              offsetParent={document.body}
-            >
-              <div
-                style={{ zIndex: contactCurrentZIndex, position: "relative" }}
-              >
-                <div ref={nodeRef}>
-                  <ContactWindow
-                    contactOpen={contactIsOpen}
-                    contactOnClose={() => contactSetIsOpen(false)}
-                  />
-                </div>
-              </div>
-            </Draggable>
-            <Draggable
-              onStart={LinksPrioritize}
-              onStop={LinksDeprioritize}
-              nodeRef={nodeRef}
-              offsetParent={document.body}
-            >
-              <div style={{ zIndex: linksCurrentZIndex, position: "relative" }}>
-                <div ref={nodeRef}>
-                  <LinksWindow
-                    linksOpen={linksIsOpen}
-                    linksOnClose={() => linksSetIsOpen(false)}
-                  />
-                </div>
-              </div>
-            </Draggable>
-            <Draggable
-              onStart={MiscPrioritize}
-              onStop={MiscDeprioritize}
-              nodeRef={nodeRef}
-              offsetParent={document.body}
-            >
-              <div style={{ zIndex: miscCurrentZIndex, position: "relative" }}>
-                <div ref={nodeRef}>
-                  <MiscWindow
-                    miscOpen={miscIsOpen}
-                    miscOnClose={() => miscSetIsOpen(false)}
-                  />
-                </div>
-              </div>
-            </Draggable>
+    <div>
+      <div
+        className="absolute inset-0 h-screen w-screen"
+        style={{ overflow: "hidden" }}
+      >
+        <Draggable
+          onStart={homePrioritize}
+          onStop={homeDeprioritize}
+          nodeRef={homeRef}
+          bounds="parent"
+          defaultPosition={{
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+          }}
+        >
+          <div
+            ref={homeRef}
+            style={{
+              zIndex: homeCurrentZIndex,
+              position: "absolute",
+            }}
+          >
+            <Window
+              className="relative select-none z-100"
+              homeOpen={homeIsOpen}
+              homeOnClose={() => homeSetIsOpen(false)}
+            />
           </div>
-          <div className="">
+        </Draggable>
+
+        <Draggable
+          onStart={AboutPrioritize}
+          onStop={AboutDeprioritize}
+          nodeRef={aboutRef}
+          bounds="parent"
+          defaultPosition={{
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+          }}
+        >
+          <div
+            ref={aboutRef}
+            style={{ zIndex: aboutCurrentZIndex, position: "absolute" }}
+          >
+            <AboutWindow
+              className="relative select-none z-100"
+              aboutOpen={aboutIsOpen}
+              aboutOnClose={() => aboutSetIsOpen(false)}
+            />
+          </div>
+        </Draggable>
+        <Draggable
+          onStart={WorkPrioritize}
+          onStop={WorkDeprioritize}
+          nodeRef={workRef}
+          bounds="parent"
+          defaultPosition={{
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+          }}
+        >
+          <div
+            ref={workRef}
+            style={{ zIndex: workCurrentZIndex, position: "absolute" }}
+          >
+            <WorkWindow
+              workOpen={workIsOpen}
+              workOnClose={() => workSetIsOpen(false)}
+            />
+          </div>
+        </Draggable>
+        <Draggable
+          onStart={ContactPrioritize}
+          onStop={ContactDeprioritize}
+          nodeRef={contactRef}
+          bounds="parent"
+          defaultPosition={{
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+          }}
+        >
+          <div
+            ref={contactRef}
+            style={{ zIndex: contactCurrentZIndex, position: "absolute" }}
+          >
+            <ContactWindow
+              contactOpen={contactIsOpen}
+              contactOnClose={() => contactSetIsOpen(false)}
+            />
+          </div>
+        </Draggable>
+        <Draggable
+          onStart={LinksPrioritize}
+          onStop={LinksDeprioritize}
+          nodeRef={linksRef}
+          bounds="parent"
+          defaultPosition={{
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+          }}
+        >
+          <div
+            ref={linksRef}
+            style={{ zIndex: linksCurrentZIndex, position: "absolute" }}
+          >
+            <LinksWindow
+              linksOpen={linksIsOpen}
+              linksOnClose={() => linksSetIsOpen(false)}
+            />
+          </div>
+        </Draggable>
+        <Draggable
+          onStart={MiscPrioritize}
+          onStop={MiscDeprioritize}
+          nodeRef={miscRef}
+          bounds="parent"
+          defaultPosition={{
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+          }}
+        >
+          <div
+            ref={miscRef}
+            style={{ zIndex: miscCurrentZIndex, position: "absolute" }}
+          >
+            <MiscWindow
+              miscOpen={miscIsOpen}
+              miscOnClose={() => miscSetIsOpen(false)}
+            />
+          </div>
+        </Draggable>
+      </div>
+      <div className="flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black text-md">
+        <div className="mt-2 mr-9">
+          <div>
             <button
-              onDoubleClick={() => homeSetIsOpen(true)}
+              onDoubleClick={() => {
+                homeSetIsOpen(true);
+                homePrioritize();
+              }}
+              onClick={() => {
+                DragCompIndex.updateIndex();
+                homeSetZIndex(DragCompIndex.index);
+              }}
               className="hover:bg-blue-300/60"
             >
               <img className="max-w-20" src={houseIcon} alt="HomeIcon"></img>
@@ -193,7 +239,14 @@ export default function Shortcuts() {
           </div>
           <div className="mt-2">
             <button
-              onDoubleClick={() => aboutSetIsOpen(true)}
+              onDoubleClick={() => {
+                aboutSetIsOpen(true);
+                AboutPrioritize();
+              }}
+              onClick={() => {
+                DragCompIndex.updateIndex();
+                aboutSetZIndex(DragCompIndex.index);
+              }}
               className="hover:bg-blue-300/60"
             >
               <img
@@ -207,7 +260,14 @@ export default function Shortcuts() {
           </div>
           <div className="mt-2">
             <button
-              onDoubleClick={() => workSetIsOpen(true)}
+              onDoubleClick={() => {
+                workSetIsOpen(true);
+                WorkPrioritize();
+              }}
+              onClick={() => {
+                DragCompIndex.updateIndex();
+                workSetZIndex(DragCompIndex.index);
+              }}
               className="hover:bg-blue-300/60"
             >
               <img className="max-w-20" src={houseIcon} alt="FolderIcon"></img>
@@ -216,7 +276,14 @@ export default function Shortcuts() {
           </div>
           <div className="mt-2">
             <button
-              onDoubleClick={() => contactSetIsOpen(true)}
+              onDoubleClick={() => {
+                contactSetIsOpen(true);
+                ContactPrioritize();
+              }}
+              onClick={() => {
+                DragCompIndex.updateIndex();
+                contactSetZIndex(DragCompIndex.index);
+              }}
               className="hover:bg-blue-300/60"
             >
               <img
@@ -229,7 +296,14 @@ export default function Shortcuts() {
           </div>
           <div className="mt-2">
             <button
-              onDoubleClick={() => linksSetIsOpen(true)}
+              onDoubleClick={() => {
+                LinksPrioritize();
+                linksSetIsOpen(true);
+              }}
+              onClick={() => {
+                DragCompIndex.updateIndex();
+                linksSetZIndex(DragCompIndex.index);
+              }}
               className="hover:bg-blue-300/60"
             >
               <img
@@ -242,7 +316,14 @@ export default function Shortcuts() {
           </div>
           <div className="mt-2">
             <button
-              onDoubleClick={() => miscSetIsOpen(true)}
+              onDoubleClick={() => {
+                MiscPrioritize();
+                miscSetIsOpen(true);
+              }}
+              onClick={() => {
+                DragCompIndex.updateIndex();
+                miscSetZIndex(DragCompIndex.index);
+              }}
               className="hover:bg-blue-300/60"
             >
               <img
@@ -278,6 +359,6 @@ export default function Shortcuts() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
