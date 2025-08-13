@@ -1,3 +1,9 @@
+@tailwind utilities;
+
+* {
+  scrollbar-color: fef1e7;
+}
+
 @font-face {
   font-family: DotoBold;
   src: url("../src/assets/fonts/Doto-ExtraBold.ttf");
@@ -12,6 +18,17 @@
   font-family: OutfitBold;
   src: url("../src/assets/fonts/Outfit-Bold.ttf");
 }
+
+@font-face {
+  font-family: OutfitMedium;
+  src: url("../src/assets/fonts/Outfit-Medium.ttf");
+}
+
+@font-face {
+  font-family: OutfitLight;
+  src: url("../src/assets/fonts/Outfit-Light.ttf");
+}
+
 @import "tailwindcss";
 
 
@@ -23,4 +40,15 @@
   --font-dotoBold: DotoBold, "sans-serif";
   --font-outfit: Outfit, "sans-serif";
   --font-outfitBold: OutfitBold, "sans-serif";
+  --font-outfitMedium: OutfitMedium, "sans-serif";
+  --font-outfitLight: OutfitLight, "sans-serif";
+}
+
+::-webkit-scrollbar {
+  background-color: #fef1e7;
+  width: .75rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d1c7bf;
 }

@@ -12,7 +12,6 @@ export default function Window({ homeOpen, homeOnClose }) {
       }`}
     >
       <div className="absolute shrink bg-windowBox mb-15 w-205 h-130 drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 outline-black z-100">
-        {" "}
         {/*Change color to whatever works*/}
         <div className="flex w-full items-center bg-siteGreen h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2">
           <h1 className="text-3xl font-dotoBold text-white ml-4 mb-0.5">
