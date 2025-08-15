@@ -21,7 +21,7 @@ export default function Window({ homeOpen, homeOnClose }) {
             onClick={homeOnClose}
             className="mr-2 max-w-15 max-h-10 justify-items-center text-center hover:bg-black/20"
           >
-            <h1 className="pl-4 group-hover:select-none text-3xl font-dotoBold text-white self-center justify-self-center mb-1 mr-3">
+            <h1 className="cursor-pointer pl-4 group-hover:select-none text-3xl font-dotoBold text-white self-center justify-self-center mb-1 mr-3">
               &#91;X&#93;
             </h1>
           </button>

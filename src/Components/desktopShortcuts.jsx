@@ -159,26 +159,6 @@ export default function Shortcuts() {
           </div>
         </Draggable>
         <Draggable
-          onStart={ContactPrioritize}
-          onStop={ContactDeprioritize}
-          nodeRef={contactRef}
-          bounds="parent"
-          defaultPosition={{
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 2,
-          }}
-        >
-          <div
-            ref={contactRef}
-            style={{ zIndex: contactCurrentZIndex, position: "absolute" }}
-          >
-            <ContactWindow
-              contactOpen={contactIsOpen}
-              contactOnClose={() => contactSetIsOpen(false)}
-            />
-          </div>
-        </Draggable>
-        <Draggable
           onStart={LinksPrioritize}
           onStop={LinksDeprioritize}
           nodeRef={linksRef}
@@ -195,6 +175,26 @@ export default function Shortcuts() {
             <LinksWindow
               linksOpen={linksIsOpen}
               linksOnClose={() => linksSetIsOpen(false)}
+            />
+          </div>
+        </Draggable>
+        <Draggable
+          onStart={ContactPrioritize}
+          onStop={ContactDeprioritize}
+          nodeRef={contactRef}
+          bounds="parent"
+          defaultPosition={{
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+          }}
+        >
+          <div
+            ref={contactRef}
+            style={{ zIndex: contactCurrentZIndex, position: "absolute" }}
+          >
+            <ContactWindow
+              contactOpen={contactIsOpen}
+              contactOnClose={() => contactSetIsOpen(false)}
             />
           </div>
         </Draggable>
@@ -231,7 +231,7 @@ export default function Shortcuts() {
                 DragCompIndex.updateIndex();
                 homeSetZIndex(DragCompIndex.index);
               }}
-              className="hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60"
             >
               <img className="max-w-20" src={houseIcon} alt="HomeIcon"></img>
               <h1>Home</h1>
@@ -247,7 +247,7 @@ export default function Shortcuts() {
                 DragCompIndex.updateIndex();
                 aboutSetZIndex(DragCompIndex.index);
               }}
-              className="hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60"
             >
               <img
                 className="max-w-20"
@@ -268,30 +268,10 @@ export default function Shortcuts() {
                 DragCompIndex.updateIndex();
                 workSetZIndex(DragCompIndex.index);
               }}
-              className="hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60"
             >
               <img className="max-w-20" src={houseIcon} alt="FolderIcon"></img>
               <h1>Work</h1>
-            </button>
-          </div>
-          <div className="mt-2">
-            <button
-              onDoubleClick={() => {
-                contactSetIsOpen(true);
-                ContactPrioritize();
-              }}
-              onClick={() => {
-                DragCompIndex.updateIndex();
-                contactSetZIndex(DragCompIndex.index);
-              }}
-              className="hover:bg-blue-300/60"
-            >
-              <img
-                className="max-w-20"
-                src={houseIcon}
-                alt="Envelope/Phone Icon"
-              ></img>
-              <h1>Contact</h1>
             </button>
           </div>
           <div className="mt-2">
@@ -304,7 +284,7 @@ export default function Shortcuts() {
                 DragCompIndex.updateIndex();
                 linksSetZIndex(DragCompIndex.index);
               }}
-              className="hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60"
             >
               <img
                 className="max-w-20"
@@ -317,6 +297,26 @@ export default function Shortcuts() {
           <div className="mt-2">
             <button
               onDoubleClick={() => {
+                contactSetIsOpen(true);
+                ContactPrioritize();
+              }}
+              onClick={() => {
+                DragCompIndex.updateIndex();
+                contactSetZIndex(DragCompIndex.index);
+              }}
+              className="cursor-pointer hover:bg-blue-300/60"
+            >
+              <img
+                className="max-w-20"
+                src={houseIcon}
+                alt="Envelope/Phone Icon"
+              ></img>
+              <h1>Contact</h1>
+            </button>
+          </div>
+          <div className="mt-2">
+            <button
+              onDoubleClick={() => {
                 MiscPrioritize();
                 miscSetIsOpen(true);
               }}
@@ -324,7 +324,7 @@ export default function Shortcuts() {
                 DragCompIndex.updateIndex();
                 miscSetZIndex(DragCompIndex.index);
               }}
-              className="hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60"
             >
               <img
                 className="max-w-20"
@@ -341,13 +341,13 @@ export default function Shortcuts() {
           {" "}
           {/*Right Icon Container*/}
           <div>
-            <button className="hover:bg-blue-300/60">
+            <button className="cursor-pointer hover:bg-blue-300/60">
               <img className="max-w-20" src={houseIcon} alt="HomeIcon"></img>
               <h1>Light</h1> {/*Maybe/Maybe not have text*/}
             </button>
           </div>
           <div className="mt-2">
-            <button className="hover:bg-blue-300/60">
+            <button className="cursor-pointer hover:bg-blue-300/60">
               <img
                 className="max-w-20"
                 src={clipboardIcon}

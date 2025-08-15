@@ -12,9 +12,12 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
+    "@vscode/codicons": "^0.0.39",
     "react": "^19.1.0",
+    "react-chevron": "^1.1.1",
     "react-dom": "^19.1.0",
     "react-draggable": "^4.5.0",
+    "react-icons": "^5.5.0",
     "tailwind-extended-shadows": "^0.4.1",
     "tailwindcss": "^4.1.11"
   },

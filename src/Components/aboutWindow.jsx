@@ -1,9 +1,30 @@
 import "tailwindcss";
 import DuckPFP from "../assets/images/KissingDuckPFPSquare.jpg";
-import React from "react";
-import Draggable from "react-draggable";
+import React, { useState, useRef, useEffect } from "react";
 
 export default function AboutWindow({ aboutOpen, aboutOnClose }) {
+  const [isShrunk, setIsShrunk] = useState(false);
+  const scrollableBodyRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!scrollableBodyRef.current) return;
+
+      const scrollTop = scrollableBodyRef.current.scrollTop;
+      setIsShrunk(scrollTop > 30);
+    };
+
+    const currentBody = scrollableBodyRef.current;
+    if (currentBody) {
+      currentBody.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (currentBody) {
+        currentBody.removeEventListener("scroll", handleScroll);
+      }
+    };
+  });
   return (
     <div
       className={`transition-all select-none ${
@@ -20,52 +41,72 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
             onClick={aboutOnClose}
             className="mr-3 mt-3 max-w-15 max-h-10 justify-items-center text-center hover:bg-black/20"
           >
-            <h1 className="pl-4 group-hover:select-none text-3xl font-dotoBold text-white self-center justify-self-center mb-5 mr-3">
+            <h1 className="cursor-pointer pl-4 group-hover:select-none text-3xl font-dotoBold text-white self-center justify-self-center mb-5 mr-3">
               &#91;X&#93;
             </h1>
           </button>
         </div>
         {/*Introduction of About Window*/}
         <div className="flex flex-col justify-center h-115 max-w-full max-h-115 text-wrap wrap-anywhere">
-          <div className="flex font-outfit pt-10 pl-13 text-black">
+          <div
+            className={`flex font-outfit text-black items-center transition-all duration-300 ease-in-out ${
+              isShrunk ? "pt-4 pl-6" : "pt-10 pl-13"
+            }`}
+          >
             <img
               src={DuckPFP}
               alt="Photo of me!!!1!"
-              className="justify-self-center self-center w-40 rounded-full"
+              className={`outline-green-700 outline-solid justify-self-center self-center rounded-full transition-all duration-300 ease-in-out ${
+                isShrunk ? "w-20 mt-2 outline-3" : "w-40 outline-5"
+              }`}
             />
-            <div className="flex flex-col ml-10">
-              <h1 className="text-[3.9rem] leading-tight text-green-700">
+            <div
+              className={`flex flex-col ml-10 transition-all duration-300 ease-in-out`}
+            >
+              <h1
+                className={`leading-tight text-green-700 transition-all duration-300 ease-in-out ${
+                  isShrunk ? "text-[3.5rem] mt-1" : "text-[3.9rem]"
+                }`}
+              >
                 Nathan Lomnicky
               </h1>
-              <h2 className="text-[1.5rem] font-outfitMedium">
-                Independant Game and Web Developer
-              </h2>
-              <h2 className="text-[1.5rem] font-outfitMedium">
-                Student at{" "}
-                <a href="https://miamioh.edu/" target="_blank">
-                  <span className="font-outfitMedium text-red-500 underline hover:text-red-700">
-                    Miami University
-                  </span>
-                </a>
-              </h2>
+              <div
+                className={`transition-all duration-300 ease-in-out ${
+                  isShrunk
+                    ? "text-[0rem] opacity-0"
+                    : "text-[1.5rem] opacity-100"
+                }`}
+              >
+                <h2 className="font-outfitMedium">
+                  Independant Game and Web Developer
+                </h2>
+                <h2 className="font-outfitMedium">
+                  Student at{" "}
+                  <a href="https://miamioh.edu/" target="_blank">
+                    <span className="font-outfitMedium text-red-500 underline hover:text-red-700">
+                      Miami University
+                    </span>
+                  </a>
+                </h2>
+              </div>
             </div>
           </div>
           <hr className="mt-7 stroke-black opacity-20" />
           {/*Body of About Window*/}
           {/*Summary*/}
-          <div className="overflow-y-auto flex-grow text-[1.44rem] flex-col justify-between font-outfit ml-16">
+          <div
+            ref={scrollableBodyRef}
+            className="overflow-y-auto flex-grow text-[1.44rem] flex-col justify-between font-outfit ml-16"
+          >
             <div className="mt-6 mb-20 mr-7">
               <h1>
                 Hey! I'm&nbsp;
                 <span className="text-green-700 font-outfitMedium">Nathan</span>
                 , a Developer currently studying Game Design and Computer
-                Science at&nbsp;
-                <a href="https://miamioh.edu/" target="_blank">
-                  <span className="font-outfitMedium text-red-500 underline hover:text-red-700">
-                    Miami University
-                  </span>
-                </a>
-                .
+                Science.&nbsp;
+                <span className="font-outfitMedium">
+                  Thanks for stopping by! :&#41;
+                </span>
               </h1>
               <div className="mt-8">
                 <h1 className="text-3xl font-outfitMedium">Summary:</h1>
@@ -137,7 +178,7 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
                 <h1 className="mt-3">
                   I previously made gaming content under the name&nbsp;
                   <a href="https://www.youtube.com/@beefy1990" target="_blank">
-                    <span className="text-amber-700 font-outfitMedium underline hover:text-amber-800">
+                    <span className="text-amber-700 font-outfitBold underline hover:text-amber-800">
                       Beefy
                     </span>
                   </a>

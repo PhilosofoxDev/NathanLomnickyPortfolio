@@ -20,7 +20,7 @@ export default function ContactWindow({ contactOpen, contactOnClose }) {
             onClick={contactOnClose}
             className="mr-3 mt-3 max-w-15 max-h-10 justify-items-center text-center hover:bg-black/20"
           >
-            <h1 className="pl-4 group-hover:select-none text-3xl font-dotoBold text-white self-center justify-self-center mb-1 mr-3">
+            <h1 className="cursor-pointer pl-4 group-hover:select-none text-3xl font-dotoBold text-white self-center justify-self-center mb-1 mr-3">
               &#91;X&#93;
             </h1>
           </button>
