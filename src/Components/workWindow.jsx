@@ -36,7 +36,7 @@ export default function WorkWindow({ workOpen, workOnClose }) {
           <hr />
 
           <div
-            className={`overflow-y-auto font-outfit text-2xl pl-10 pr-10 pt-5 `}
+            className={`overflow-y-auto font-outfit text-2xl pl-10 pr-10 pt-5 pb-20`}
           >
             {/*Body of Work Window*/}
             <div>
@@ -49,9 +49,17 @@ export default function WorkWindow({ workOpen, workOnClose }) {
               >
                 <div className="flex gap-1 items-center">
                   Games
-                  <Chevron direction="down" reversed={gamesOpen} />
+                  <Chevron direction={`${gamesOpen ? "up" : "down"}`} />
                 </div>
               </button>
+              <div
+                className={`flex justify-between transition-all duration-300 ease-in-out ${
+                  gamesOpen ? "opacity-100" : "opacity-0 text-[0rem]"
+                }`}
+              >
+                <h1>ge</h1>
+                <h1>gh</h1>
+              </div>
             </div>
             <div className="mt-10">
               {/*Dev Projects Section*/}
@@ -63,9 +71,18 @@ export default function WorkWindow({ workOpen, workOnClose }) {
               >
                 <div className="flex gap-1 items-center">
                   Projects
-                  <Chevron direction="down" reversed={projectsOpen} />
+                  <Chevron direction={`${projectsOpen ? "up" : "down"}`} />
                 </div>
               </button>
+              <div
+                className={`flex justify-between transition-all duration-300 ease-in-out ${
+                  projectsOpen ? "opacity-100" : "opacity-0 text-[0rem]"
+                }`}
+              >
+                <h1>ge</h1>
+                <h1>gh</h1>
+                <h1>gdsgsd</h1>
+              </div>
             </div>
             <div className="mt-10">
               {/*Other Stuff Section*/}
@@ -77,9 +94,17 @@ export default function WorkWindow({ workOpen, workOnClose }) {
               >
                 <div className="flex gap-1 items-center">
                   Other Stuff
-                  <Chevron direction="down" reversed={otherOpen} />
+                  <Chevron direction={`${otherOpen ? "up" : "down"}`} />
                 </div>
               </button>
+              <div
+                className={`flex justify-between transition-all duration-300 ease-in-out ${
+                  otherOpen ? "opacity-100" : "opacity-0 text-[0rem]"
+                }`}
+              >
+                <h1>ge</h1>
+                <h1>gh</h1>
+              </div>
             </div>
           </div>
         </div>
