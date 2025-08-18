@@ -1,7 +1,8 @@
 import "tailwindcss";
 import React, { useState } from "react";
-import Draggable from "react-draggable";
 import Chevron from "react-chevron";
+import BedmimeImage from "../assets/images/BedmimeTitle.png";
+import StormchaserImage from "../assets/images/StormchaserCover.png";
 
 export default function WorkWindow({ workOpen, workOnClose }) {
   const [gamesOpen, setGamesOpen] = useState(false);
@@ -33,7 +34,7 @@ export default function WorkWindow({ workOpen, workOnClose }) {
           <div className={`self-center mt-2`}>
             <h1 className={`font-outfit text-[3.5rem]`}>Things I've made!</h1>
           </div>
-          <hr />
+          <hr className="stroke-black opacity-20" />
 
           <div
             className={`overflow-y-auto font-outfit text-2xl pl-10 pr-10 pt-5 pb-20`}
@@ -52,13 +53,82 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                   <Chevron direction={`${gamesOpen ? "up" : "down"}`} />
                 </div>
               </button>
-              <div
-                className={`flex justify-between transition-all duration-300 ease-in-out ${
-                  gamesOpen ? "opacity-100" : "opacity-0 text-[0rem]"
+              <h1
+                className={`transition-all duration-300 ease-in-out ${
+                  gamesOpen
+                    ? "text-[1.2rem] opacity-100 mt-5 mb-2"
+                    : "text-[0rem] opacity-0 mt-0 mb-0"
                 }`}
               >
-                <h1>ge</h1>
-                <h1>gh</h1>
+                All of my game projects can be found&nbsp;
+                <a href="https://philosofox.itch.io/" target="blank_">
+                  <span className="font-outfitMedium text-green-700 underline hover:text-green-900">
+                    here
+                  </span>
+                </a>
+                , but these are my favorites.
+              </h1>
+              <div
+                className={`grid grid-cols-1 transition-all duration-300 ease-in-out ${
+                  gamesOpen
+                    ? "opacity-100 gap-y-10"
+                    : "opacity-0 text-[0rem] mt-0 gap-y-0"
+                }`}
+              >
+                {/*Work Tile*/}
+                <div
+                  className={`transition-all duration-300 ease-in-out bg-workTileBg ${
+                    gamesOpen ? "w-180 h-64" : "w-0 h-0"
+                  }`}
+                >
+                  <div className={`flex align-middle self-center m-4`}>
+                    <img
+                      src={BedmimeImage}
+                      alt="BedmimeThumbnail"
+                      className={`self-center w-9/16 outline-5 outline-siteGreen transition-all duration-300 ease-in-out ${
+                        gamesOpen ? "w-9/16" : "w-0"
+                      }`}
+                    />
+                    <h1
+                      className={`ml-5 text-[1.3rem] ${
+                        gamesOpen
+                          ? "text-[1.3rem] opacity-100"
+                          : "text-[0rem] opacity-0"
+                      }`}
+                    >
+                      <i>Bedmime</i> was the first game I ever made. A smaller
+                      project meant to learn the basics of Unity, Bedmime has
+                      you holding back a silent beast with only a flashlight.
+                    </h1>
+                  </div>
+                </div>
+                <div
+                  className={`transition-all duration-300 ease-in-out bg-workTileBg ${
+                    gamesOpen ? "w-180 h-64" : "w-0 h-0"
+                  }`}
+                >
+                  <div className={`flex align-middle self-center m-4`}>
+                    <img
+                      src={StormchaserImage}
+                      alt="StormchaserThumbnail"
+                      className={`self-center outline-5 outline-siteGreen transition-all duration-300 ease-in-out ${
+                        gamesOpen ? "w-7/16" : "w-0"
+                      }`}
+                    />
+                    <h1
+                      className={`ml-5 text-[1.3rem] ${
+                        gamesOpen
+                          ? "text-[1.3rem] opacity-100"
+                          : "text-[0rem] opacity-0"
+                      }`}
+                    >
+                      <i>The Stormchaser</i> was a game made for the 2025 Phil
+                      Alexander Game Jam at Miami University. It was the first
+                      collaborative project I have participated in, and helped
+                      me learn a lot about working with others.
+                    </h1>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="mt-10">
@@ -75,13 +145,24 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                 </div>
               </button>
               <div
-                className={`flex justify-between transition-all duration-300 ease-in-out ${
-                  projectsOpen ? "opacity-100" : "opacity-0 text-[0rem]"
+                className={`grid grid-cols-2 justify-items-center transition-all duration-300 ease-in-out ${
+                  projectsOpen
+                    ? "opacity-100 mt-8 gap-y-10"
+                    : "opacity-0 text-[0rem] mt-0 gap-y-0"
                 }`}
               >
-                <h1>ge</h1>
-                <h1>gh</h1>
-                <h1>gdsgsd</h1>
+                <div
+                  className={`transition-all duration-300 ease-in-out bg-workTileBg ${
+                    projectsOpen ? "w-70 h-75" : "w-0 h-0"
+                  }`}
+                >
+                  <div className={`flex align-middle self-center m-4`}></div>
+                </div>
+                <div
+                  className={`transition-all duration-300 ease-in-out bg-workTileBg ${
+                    projectsOpen ? "w-70 h-75" : "w-0 h-0"
+                  }`}
+                ></div>
               </div>
             </div>
             <div className="mt-10">
@@ -98,8 +179,10 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                 </div>
               </button>
               <div
-                className={`flex justify-between transition-all duration-300 ease-in-out ${
-                  otherOpen ? "opacity-100" : "opacity-0 text-[0rem]"
+                className={`grid grid-cols-3 justify-items-center transition-all duration-300 ease-in-out ${
+                  otherOpen
+                    ? "opacity-100 mt-8 gap-y-10"
+                    : "opacity-0 text-[0rem] mt-0 gap-y-0"
                 }`}
               >
                 <h1>ge</h1>
