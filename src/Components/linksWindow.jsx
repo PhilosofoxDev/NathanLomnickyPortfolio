@@ -1,6 +1,8 @@
 import "tailwindcss";
 import React from "react";
 import Draggable from "react-draggable";
+import KissingDuckPFP from "../assets/images/KissingDuckPFPSquare.webp";
+import PhilosofoxPFP from "../assets/images/FoxPFPIUse.webp";
 
 export default function LinksWindow({ linksOpen, linksOnClose }) {
   return (
@@ -25,7 +27,43 @@ export default function LinksWindow({ linksOpen, linksOnClose }) {
             </h1>
           </button>
         </div>
-        <div className="flex flex-col justify-center h-115 max-w-full max-h-115 text-wrap overflow-y-auto wrap-anywhere"></div>
+        <div className="flex flex-col justify-center h-115 max-w-full max-h-115 text-wrap overflow-y-auto wrap-anywhere">
+          <div className={`self-center mt-2`}>
+            <h1 className={`font-outfit text-[3.5rem]`}>Connect with Me!</h1>
+          </div>
+          <hr className="stroke-black opacity-20" />
+          Maybe add some text here that tells the user what to do in this window
+          like, "you can find all of my links here!"
+          <div
+            className={`flex flex-col overflow-y-auto font-outfit text-2xl pb-20 pt-5`}
+          >
+            <div className="grid grid-cols-2 justify-items-center pr-25 pl-25">
+              <div className="flex flex-col items-center">
+                <img
+                  src={KissingDuckPFP}
+                  className="rounded-full size-35 outline-green-700 outline-5"
+                />
+                <h1 className="pt-4">All Personal Links</h1>
+              </div>
+              <div className="flex flex-col items-center">
+                <img
+                  src={PhilosofoxPFP}
+                  className="rounded-full size-35 outline-green-700 outline-5"
+                />
+                <h1 className="pt-4">All Creator Links</h1>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 mt-10">
+              <div className="flex flex-col items-center">
+                <img
+                  src={PhilosofoxPFP}
+                  className="rounded-full size-25 outline-green-700 outline-5"
+                />
+                <h1 className="pt-4">All Creator Links</h1>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

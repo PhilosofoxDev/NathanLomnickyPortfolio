@@ -1,5 +1,5 @@
 import "tailwindcss";
-import DuckPFP from "../assets/images/KissingDuckPFPSquare.jpg";
+import DuckPFP from "../assets/images/KissingDuckPFPSquare.webp";
 import React, { useState, useRef, useEffect } from "react";
 
 export default function AboutWindow({ aboutOpen, aboutOnClose }) {

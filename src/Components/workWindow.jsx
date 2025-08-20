@@ -1,10 +1,11 @@
 import "tailwindcss";
 import React, { useState } from "react";
 import Chevron from "react-chevron";
-import BedmimeImage from "../assets/images/BedmimeTitle.png";
-import StormchaserImage from "../assets/images/StormchaserCover.png";
-import WebsiteImage from "../assets/images/WebsiteImage.png";
+import BedmimeImage from "../assets/images/BedmimeTitle.webp";
+import StormchaserImage from "../assets/images/StormchaserCover.webp";
+import WebsiteImage from "../assets/images/WebsiteImage.webp";
 import BlenderImage from "../assets/images/BlenderCollectionForWebsite.webp";
+import ChannelsImage from "../assets/images/WebsiteImage.webp";
 import WorkTile from "./workTile";
 
 export default function WorkWindow({ workOpen, workOnClose }) {
@@ -223,6 +224,40 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                           well. 3D modeling with programs like blender is not
                           only a hobby of mine, but a skill I find necessary to
                           improve.
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={`grid grid-cols-1 justify-items-center transition-all duration-300 ease-in-out ${
+                      otherOpen
+                        ? "opacity-100 mt-5 gap-y-10"
+                        : "opacity-0 text-[0rem] mt-0 gap-y-0"
+                    }`}
+                  >
+                    <div
+                      className={`mt-5 transition-all duration-300 ease-in-out bg-workTileBg ${
+                        otherOpen ? "max-w-180 max-h-58" : "max-w-0 max-h-0"
+                      }`}
+                    >
+                      <div className={`flex align-middle self-center m-4`}>
+                        <img
+                          src={BlenderImage}
+                          alt="Blender Project Images"
+                          loading="lazy"
+                          className={`self-center outline-5 max-w-31/64 outline-siteGreen`}
+                        />
+                        <h1
+                          className={`ml-5 transition-all duration-300 ease-in-out ${
+                            otherOpen
+                              ? "text-[1.3rem] opacity-100"
+                              : "text-0 hidden"
+                          }`}
+                        >
+                          My Channels! Like I mentioned in the "About" window, I
+                          love creating videos and sharing them online. I
+                          previously made gaming content, but am shifting my
+                          focus to development logs and streams.
                         </h1>
                       </div>
                     </div>

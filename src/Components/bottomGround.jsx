@@ -1,5 +1,5 @@
 import "tailwindcss";
-import grassyHills from "../assets/images/GrassyHillsCropped.png";
+import grassyHills from "../assets/images/GrassyHillsCropped.webp";
 
 function Ground() {
   return (
