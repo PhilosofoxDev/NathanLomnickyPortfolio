@@ -42,6 +42,10 @@ export default function Window({ homeOpen, homeOnClose }) {
               different <span className="font-outfitBold">Desktop Icons</span>{" "}
               to navigate.
             </h2>
+            <h2 className="mt-4 font-outfitMedium text-[1.2rem]">
+              &#40;You can also click an icon to bring an already-opened window
+              to the front&#41;
+            </h2>
           </div>
         </div>
       </div>

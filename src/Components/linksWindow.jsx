@@ -2,7 +2,7 @@ import "tailwindcss";
 import React from "react";
 import Draggable from "react-draggable";
 import KissingDuckPFP from "../assets/images/KissingDuckPFPSquare.webp";
-import PhilosofoxPFP from "../assets/images/FoxPFPIUse.webp";
+import PhilosofoxPFP from "../assets/images/Philosofox.webp";
 import InstaLogo from "../assets/images/instagramLogo.webp";
 import LinkedinLogo from "../assets/images/LinkedinLogo.webp";
 import HandshakeLogo from "../assets/images/HandshakeLogo.webp";
@@ -32,7 +32,7 @@ export default function LinksWindow({ linksOpen, linksOnClose }) {
             </h1>
           </button>
         </div>
-        <div className="flex flex-col justify-center h-110 max-w-full max-h-115 text-wrap overflow-y-auto wrap-anywhere">
+        <div className="flex flex-col justify-center max-w-full max-h-115 text-wrap overflow-y-auto wrap-anywhere">
           <div className={`self-center`}>
             <h1 className={`font-outfit text-[3.5rem]`}>Connect with Me!</h1>
           </div>
