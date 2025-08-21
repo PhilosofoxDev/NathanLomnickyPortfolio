@@ -25,7 +25,23 @@ export default function ContactWindow({ contactOpen, contactOnClose }) {
             </h1>
           </button>
         </div>
-        <div className="flex flex-col justify-center h-115 max-w-full max-h-115 text-wrap overflow-y-auto wrap-anywhere"></div>
+        <div className="flex flex-col justify-center h-115 max-w-full max-h-115 text-wrap overflow-y-auto wrap-anywhere">
+          <div className={`text-center`}>
+            <h1 className={`font-outfit text-[3.5rem]`}>Reach out!</h1>
+          </div>
+          <hr className="mt-3 stroke-black opacity-20" />
+          <div
+            className={`grid grid-cols-3 mb-25 mt-15 text-center justify-items-center overflow-y-auto font-outfit text-2xl`}
+          >
+            <h1 className="ml-20 mt-10">
+              blahblahblahcopy address/email direct
+            </h1>
+            <h1 className="mt-20 font-outfitBold">|| OR ||</h1>
+            <h1 className="mr-20 mt-10">
+              Contact me on any of the socials listed in the "links" window
+            </h1>
+          </div>
+        </div>
       </div>
     </div>
   );
