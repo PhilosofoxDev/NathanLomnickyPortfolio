@@ -41,7 +41,7 @@ export default function MiscWindow({ miscOpen, miscOnClose }) {
           >
             <div className="border-b-1 border-r-1 mt-5">
               <h1 className="font-outfitMedium text-orange-600 text-4xl">
-                FOXES!
+                Foxes!
               </h1>
               <h1 className="text-[1.1rem] ml-4 mr-4">
                 I think foxes are facinating animals, which is why they appear a

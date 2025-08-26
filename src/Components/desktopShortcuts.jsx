@@ -8,6 +8,7 @@ import LinksWindow from "./linksWindow";
 import MiscWindow from "./miscWindow";
 import houseIcon from "../assets/images/PixelArtHouse.webp";
 import clipboardIcon from "../assets/images/Clipboard.webp";
+import folderIcon from "../assets/images/WorkFolder.webp";
 import App from "../App";
 import React, { useRef } from "react";
 import ReactDOM from "react-dom";
@@ -270,7 +271,11 @@ export default function Shortcuts() {
               }}
               className="cursor-pointer hover:bg-blue-300/60"
             >
-              <img className="max-w-20" src={houseIcon} alt="FolderIcon"></img>
+              <img
+                className="max-w-20 ml-2"
+                src={folderIcon}
+                alt="FolderIcon"
+              ></img>
               <h1>Work</h1>
             </button>
           </div>
