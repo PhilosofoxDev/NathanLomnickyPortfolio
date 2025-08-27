@@ -11,6 +11,7 @@ import clipboardIcon from "../assets/images/Clipboard.webp";
 import folderIcon from "../assets/images/WorkFolder.webp";
 import linksIcon from "../assets/images/LinksIcon.png";
 import phoneIcon from "../assets/images/ContactIcon.png";
+import miscIcon from "../assets/images/MiscIcon.png";
 import App from "../App";
 import React, { useRef } from "react";
 import ReactDOM from "react-dom";
@@ -336,11 +337,7 @@ export default function Shortcuts() {
               }}
               className="cursor-pointer hover:bg-blue-300/60"
             >
-              <img
-                className="max-w-20"
-                src={houseIcon}
-                alt="RecycleBinIcon"
-              ></img>
+              <img className="max-w-20" src={miscIcon} alt="ChestIcon"></img>
               <h1>Misc</h1>
             </button>
           </div>
