@@ -12,7 +12,7 @@ export default function MiscWindow({ miscOpen, miscOnClose }) {
         miscOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >
-      <div className="absolute bg-windowBox mb-15 w-205 h-130 drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 outline-black z-20">
+      <div className="absolute bg-windowBox mt-30 w-205 h-130 drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 outline-black z-20">
         {/*Change color to whatever works*/}
         <div className="flex w-full bg-siteGreen h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2">
           <h1 className="text-3xl font-dotoBold text-white ml-4 m-2 mt-2.5">
