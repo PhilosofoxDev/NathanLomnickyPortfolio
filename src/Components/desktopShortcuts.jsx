@@ -12,6 +12,8 @@ import folderIcon from "../assets/images/WorkFolder.webp";
 import linksIcon from "../assets/images/LinksIcon.png";
 import phoneIcon from "../assets/images/ContactIcon.png";
 import miscIcon from "../assets/images/MiscIcon.png";
+import sunIcon from "../assets/images/SunLightMode.png";
+import moonIcon from "../assets/images/MoonDarkMode.png";
 import App from "../App";
 import React, { useRef } from "react";
 import ReactDOM from "react-dom";
@@ -38,6 +40,9 @@ export default function Shortcuts() {
   const [contactCurrentZIndex, contactSetZIndex] = useState();
   const [linksCurrentZIndex, linksSetZIndex] = useState();
   const [miscCurrentZIndex, miscSetZIndex] = useState();
+
+  const [currentLightmodeIcon, setLightmodeIcon] = useState(sunIcon);
+  const [lightOrDark, setModeText] = useState("Light");
 
   const homePrioritize = () => {
     homeSetZIndex(DragCompIndex.index);
@@ -226,7 +231,7 @@ export default function Shortcuts() {
           </div>
         </Draggable>
       </div>
-      <div className="flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black text-[1.1rem]">
+      <div className="flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black text-md">
         <div className="mt-2 mr-9">
           <div>
             <button
@@ -320,7 +325,7 @@ export default function Shortcuts() {
               <img
                 className="max-w-18 pt-2 ml-1 mr-1"
                 src={phoneIcon}
-                alt="Phone Icon"
+                alt="PhoneIcon"
               ></img>
               <h1>Contact</h1>
             </button>
@@ -337,31 +342,38 @@ export default function Shortcuts() {
               }}
               className="cursor-pointer hover:bg-blue-300/60"
             >
-              <img className="max-w-20" src={miscIcon} alt="ChestIcon"></img>
+              <img
+                className="max-w-18 ml-1 mr-1 pt-2"
+                src={miscIcon}
+                alt="ChestIcon"
+              ></img>
               <h1>Misc</h1>
             </button>
           </div>
         </div>
       </div>
-      <div className="flex w-35 absolute justify-self-end justify-center h-screen text-center font-dotoBold text-black text-md z-5">
+      <div className="flex w-35 absolute justify-self-end justify-end mr-3 h-screen text-center font-dotoBold text-black text-md z-5">
         <div className="mt-2">
-          {" "}
           {/*Right Icon Container*/}
           <div>
-            <button className="cursor-pointer hover:bg-blue-300/60">
-              <img className="max-w-20" src={houseIcon} alt="HomeIcon"></img>
-              <h1>Light</h1> {/*Maybe/Maybe not have text*/}
-            </button>
-          </div>
-          <div className="mt-2">
-            <button className="cursor-pointer hover:bg-blue-300/60">
+            <button
+              onDoubleClick={() => {
+                if (currentLightmodeIcon == sunIcon) {
+                  setLightmodeIcon(moonIcon);
+                  setModeText("Dark");
+                } else {
+                  setLightmodeIcon(sunIcon);
+                  setModeText("Light");
+                }
+              }}
+              className="cursor-pointer hover:bg-blue-300/60"
+            >
               <img
-                className="max-w-20"
-                src={clipboardIcon}
-                alt="AboutIcon"
-              ></img>{" "}
-              {/*Add top margin to every element after first one*/}
-              <h1>Mute</h1> {/*Maybe/Maybe not have text*/}
+                className="max-w-20 ml-1 mr-1 mt-2"
+                src={currentLightmodeIcon}
+                alt="LightModeIcon"
+              />
+              <h1>{lightOrDark}</h1>
             </button>
           </div>
         </div>
