@@ -26,7 +26,7 @@ class DragCompIndex {
   }
 }
 
-export default function Shortcuts() {
+export default function Shortcuts({ Mode, setMode }) {
   const [homeIsOpen, homeSetIsOpen] = useState(true);
   const [aboutIsOpen, aboutSetIsOpen] = useState(false);
   const [workIsOpen, workSetIsOpen] = useState(false);
@@ -98,8 +98,12 @@ export default function Shortcuts() {
   const contactRef = useRef(null);
   const linksRef = useRef(null);
   const miscRef = useRef(null);
+
+  const toggleTheme = () => {
+    setMode(!Mode);
+  };
   return (
-    <div>
+    <div className={Mode ? "dark" : ""}>
       <div
         className="absolute inset-0 h-screen w-screen"
         style={{ overflow: "hidden" }}
@@ -231,7 +235,7 @@ export default function Shortcuts() {
           </div>
         </Draggable>
       </div>
-      <div className="flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black text-md">
+      <div className="flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black dark:text-white text-md">
         <div className="mt-2 mr-9">
           <div>
             <button
@@ -352,12 +356,14 @@ export default function Shortcuts() {
           </div>
         </div>
       </div>
-      <div className="flex w-35 absolute justify-self-end justify-end mr-3 h-screen text-center font-dotoBold text-black text-md z-5">
+      <div className="flex w-35 absolute justify-self-end justify-end mr-3 h-screen text-center font-dotoBold text-black dark:text-white text-md z-5">
         <div className="mt-2">
           {/*Right Icon Container*/}
           <div>
             <button
-              onDoubleClick={() => {
+              onClick={() => {
+                toggleTheme();
+
                 if (currentLightmodeIcon == sunIcon) {
                   setLightmodeIcon(moonIcon);
                   setModeText("Dark");
@@ -366,7 +372,7 @@ export default function Shortcuts() {
                   setModeText("Light");
                 }
               }}
-              className="cursor-pointer hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-600/60"
             >
               <img
                 className="max-w-20 ml-1 mr-1 mt-2"

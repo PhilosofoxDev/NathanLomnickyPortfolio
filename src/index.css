@@ -31,6 +31,7 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --color-windowBox: #fef1e7;
@@ -38,6 +39,9 @@
   --color-siteGreen: #698c61;
   --color-alternateBgBlue: #dbeeff;
   --color-workTileBg: #fbe1cb;
+  --color-darkModeWindow: #2C2C30;
+  --color-darkModeGreen: #0B5E36;
+  --color-darkModeOrange: #C45602;
   --font-dotoBold: DotoBold, "sans-serif";
   --font-outfit: Outfit, "sans-serif";
   --font-outfitBold: OutfitBold, "sans-serif";

@@ -1,22 +1,20 @@
 import "tailwindcss";
+import React from "react";
 import grassyHills from "../assets/images/GrassyHillsCropped.webp";
+import darkHills from "../assets/images/DarkGrassyHills.png";
 
-function Ground() {
+export default function Ground({ Mode }) {
   return (
-    <div className="fixed select-none">
-      {" "}
-      {/*Height and Width can't be unlinked. This is fine ig, but the grass needs to stay on the bottom no matter what*/}
+    <div>
       <div className="flex max-w-225">
-        <img className="shrink" src={grassyHills}></img>
-        <img className="shrink" src={grassyHills}></img>
-        <img className="shrink" src={grassyHills}></img>
-        <img className="shrink" src={grassyHills}></img>
-        <img className="shrink" src={grassyHills}></img>
-        <img className="shrink" src={grassyHills}></img>
-        <img className="shrink" src={grassyHills}></img>
+        <img className="shrink" src={Mode ? darkHills : grassyHills}></img>
+        <img className="shrink" src={Mode ? darkHills : grassyHills}></img>
+        <img className="shrink" src={Mode ? darkHills : grassyHills}></img>
+        <img className="shrink" src={Mode ? darkHills : grassyHills}></img>
+        <img className="shrink" src={Mode ? darkHills : grassyHills}></img>
+        <img className="shrink" src={Mode ? darkHills : grassyHills}></img>
+        <img className="shrink" src={Mode ? darkHills : grassyHills}></img>
       </div>
     </div>
   );
 }
-
-export default Ground;

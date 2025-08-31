@@ -1,19 +1,22 @@
 import "tailwindcss";
 import Shortcuts from "./Components/desktopShortcuts";
 import Ground from "./Components/bottomGround";
-import AboutWindow from "./Components/aboutWindow";
-import React from "react";
-import Draggable from "react-draggable";
+import Background from "./Components/background";
+import React, { useState } from "react";
 
 function App() {
+  const [isDark, setIsDark] = useState(false);
   return (
-    <div className="select-none z-100">
-      <div className="flex absolute items-end justify-start w-screen h-screen">
-        <Ground />
+    <div className={isDark ? "dark" : ""}>
+      <div className="select-none z-100">
+        <div className="flex absolute items-end justify-start w-screen h-screen">
+          <Ground Mode={isDark ? true : false} />
+        </div>
+        <div className="">
+          <Shortcuts Mode={isDark} setMode={setIsDark} />
+        </div>
       </div>
-      <div className="">
-        <Shortcuts />
-      </div>
+      <Background />
     </div>
   );
 }
