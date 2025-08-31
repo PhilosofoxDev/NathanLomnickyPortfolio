@@ -16,7 +16,7 @@ function App() {
           <Shortcuts Mode={isDark} setMode={setIsDark} />
         </div>
       </div>
-      <Background />
+      <Background Mode={isDark} />
     </div>
   );
 }
