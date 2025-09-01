@@ -12,7 +12,7 @@ import GithubLogo from "../assets/images/githubLogo.webp";
 export default function LinksWindow({ linksOpen, linksOnClose }) {
   return (
     <div
-      className={`transition-all select-none ${
+      className={`transition-all select-none duration-200 ${
         linksOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >

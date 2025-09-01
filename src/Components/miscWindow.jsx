@@ -8,7 +8,7 @@ import MountainGoat from "../assets/images/MountainGoatImage.webp";
 export default function MiscWindow({ miscOpen, miscOnClose }) {
   return (
     <div
-      className={`transition-all select-none ${
+      className={`transition-all select-none duration-200 ${
         miscOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >

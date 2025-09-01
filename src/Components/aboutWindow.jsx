@@ -27,13 +27,13 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
   });
   return (
     <div
-      className={`transition-all select-none ${
+      className={`transition-all select-none duration-200 ${
         aboutOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >
-      <div className="absolute bg-windowBox mb-30 w-205 h-130 drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 outline-black z-0">
+      <div className="absolute bg-windowBox mb-30 w-205 h-130 drop-shadow-2xl/20 dark:drop-shadow-white rounded-sm self-center justify-self-center outline-2 outline-black z-0 dark:bg-darkModeWindow dark:outline-white">
         {/*Change color to whatever works*/}
-        <div className="flex w-full bg-siteGreen h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2">
+        <div className="flex w-full bg-siteGreen h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2 dark:bg-darkModeGreen dark:outline-white">
           <h1 className="text-3xl font-dotoBold text-white ml-4 self-center">
             &lt;about&gt;
           </h1>
@@ -41,22 +41,22 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
             onClick={aboutOnClose}
             className="mr-3 mt-3 max-w-15 max-h-10 justify-items-center text-center hover:bg-black/20"
           >
-            <h1 className="cursor-pointer pl-4 group-hover:select-none text-3xl font-dotoBold text-white self-center justify-self-center mb-5 mr-3">
+            <h1 className="cursor-pointer pl-4 group-hover:select-none text-3xl font-dotoBold text-white self-center justify-self-center mb-5 mr-3 ">
               &#91;X&#93;
             </h1>
           </button>
         </div>
         {/*Introduction of About Window*/}
-        <div className="flex flex-col justify-center h-115 max-w-full max-h-115 text-wrap wrap-anywhere">
+        <div className="flex flex-col justify-center h-115 max-w-full max-h-115 text-wrap wrap-anywhere dark:text-white dark:text-shadow-white/30 text-shadow-md">
           <div
-            className={`flex font-outfit text-black items-center transition-all duration-300 ease-in-out ${
+            className={`flex font-outfit text-black items-center transition-all duration-300 ease-in-out dark:text-white ${
               isShrunk ? "pt-4 pl-6" : "pt-10 pl-13"
             }`}
           >
             <img
               src={DuckPFP}
               alt="Photo of me!!!1!"
-              className={`outline-green-700 outline-solid justify-self-center self-center rounded-full transition-all duration-300 ease-in-out ${
+              className={`outline-green-700 dark:outline-green-500 outline-solid justify-self-center self-center rounded-full transition-all duration-300 ease-in-out ${
                 isShrunk ? "w-20 mt-2 outline-3" : "w-40 outline-5"
               }`}
             />
@@ -64,7 +64,7 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
               className={`flex flex-col ml-10 transition-all duration-300 ease-in-out`}
             >
               <h1
-                className={`leading-tight text-green-700 transition-all duration-300 ease-in-out ${
+                className={`leading-tight text-green-700 dark:text-green-500 transition-all duration-300 ease-in-out ${
                   isShrunk ? "text-[3.5rem] mt-1" : "text-[3.9rem]"
                 }`}
               >
@@ -101,7 +101,9 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
             <div className="mt-6 mb-20 mr-7">
               <h1>
                 Hey! I'm&nbsp;
-                <span className="text-green-700 font-outfitMedium">Nathan</span>
+                <span className="text-green-700 dark:text-green-500 font-outfitMedium">
+                  Nathan
+                </span>
                 , a Developer currently studying Game Design and Computer
                 Science.&nbsp;
                 <span className="font-outfitMedium">
@@ -117,7 +119,7 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
                   <li>
                     Create&nbsp;
                     <a href="https://philosofox.itch.io/" target="_blank">
-                      <span className="text-green-700 font-outfitMedium underline hover:text-green-900">
+                      <span className="text-green-700 dark:text-green-500 font-outfitMedium underline hover:text-green-900 dark:hover:text-green-700">
                         Video Games
                       </span>
                     </a>
@@ -131,7 +133,7 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
                       href="https://www.youtube.com/@PhilosofoxDev"
                       target="_blank"
                     >
-                      <span className="text-green-700 font-outfitMedium underline hover:text-green-900">
+                      <span className="text-green-700 dark:text-green-500 font-outfitMedium underline hover:text-green-900 dark:hover:text-green-700">
                         Stream and Create content
                       </span>
                     </a>
@@ -166,7 +168,7 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
                 <h1 className="mt-2">
                   Under the name&nbsp;
                   <a href="https://philosofoxdev.carrd.co/" target="_blank">
-                    <span className="text-orange-400 font-outfitBold underline hover:text-orange-600">
+                    <span className="text-orange-400 dark:text-orange-600 font-outfitMedium underline hover:text-orange-600 dark:hover:text-orange-700">
                       Philosofox
                     </span>
                   </a>
@@ -178,7 +180,7 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
                 <h1 className="mt-3">
                   I previously made gaming content under the name&nbsp;
                   <a href="https://www.youtube.com/@beefy1990" target="_blank">
-                    <span className="text-amber-700 font-outfitBold underline hover:text-amber-800">
+                    <span className="text-amber-700 dark:text-amber-600 font-outfitMedium underline hover:text-amber-800">
                       Beefy
                     </span>
                   </a>
@@ -195,7 +197,7 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
                   "Contact" icons. You can also directly email me by
                   clicking&nbsp;
                   <a href="mailto:NathanNikc7775@gmail.com" target="_blank">
-                    <span className="text-green-700 font-outfitMedium underline hover:text-green-900">
+                    <span className="text-green-700 dark:text-green-500 font-outfitMedium underline hover:text-green-900 dark:hover:text-green-700">
                       here
                     </span>
                   </a>

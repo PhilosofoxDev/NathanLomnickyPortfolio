@@ -1,7 +1,7 @@
 @tailwind utilities;
 
 * {
-  scrollbar-color: fef1e7;
+  scrollbar-color: #fef1e7;
 }
 
 @font-face {
@@ -42,6 +42,7 @@
   --color-darkModeWindow: #2C2C30;
   --color-darkModeGreen: #0B5E36;
   --color-darkModeOrange: #C45602;
+  --color-darkModeTile: #414146;
   --font-dotoBold: DotoBold, "sans-serif";
   --font-outfit: Outfit, "sans-serif";
   --font-outfitBold: OutfitBold, "sans-serif";
@@ -50,14 +51,15 @@
 }
 
 ::-webkit-scrollbar {
-  background-color: #fef1e7;
+  background-color: transparent;
   width: .75rem;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #d1c7bf;
+  background-color: rgba(0, 0, 0, 0.350);
 }
 
 body * {
   @apply transition-colors duration-500;
+  overscroll-behavior-y: none;
 }

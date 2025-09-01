@@ -8,7 +8,7 @@ export default function ContactWindow({ contactOpen, contactOnClose }) {
 
   return (
     <div
-      className={`transition-all select-none ${
+      className={`transition-all select-none duration-200 ${
         contactOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >
