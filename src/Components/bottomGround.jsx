@@ -1,12 +1,11 @@
 import "tailwindcss";
+import React from "react";
 import grassyHills from "../assets/images/GrassyHillsCropped.webp";
 
-function Ground() {
+export default function Ground() {
   return (
-    <div className="fixed select-none">
-      {" "}
-      {/*Height and Width can't be unlinked. This is fine ig, but the grass needs to stay on the bottom no matter what*/}
-      <div className="flex max-w-225">
+    <div>
+      <div className="flex max-w-225 dark:brightness-60 transition-all duration-800">
         <img className="shrink" src={grassyHills}></img>
         <img className="shrink" src={grassyHills}></img>
         <img className="shrink" src={grassyHills}></img>
@@ -18,5 +17,3 @@ function Ground() {
     </div>
   );
 }
-
-export default Ground;

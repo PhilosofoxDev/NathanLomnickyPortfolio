@@ -8,6 +8,12 @@ import LinksWindow from "./linksWindow";
 import MiscWindow from "./miscWindow";
 import houseIcon from "../assets/images/PixelArtHouse.webp";
 import clipboardIcon from "../assets/images/Clipboard.webp";
+import folderIcon from "../assets/images/WorkFolder.webp";
+import linksIcon from "../assets/images/LinksIcon.png";
+import phoneIcon from "../assets/images/ContactIcon.png";
+import miscIcon from "../assets/images/MiscIcon.png";
+import sunIcon from "../assets/images/SunLightMode.png";
+import moonIcon from "../assets/images/MoonDarkMode.png";
 import App from "../App";
 import React, { useRef } from "react";
 import ReactDOM from "react-dom";
@@ -20,7 +26,7 @@ class DragCompIndex {
   }
 }
 
-export default function Shortcuts() {
+export default function Shortcuts({ Mode, setMode }) {
   const [homeIsOpen, homeSetIsOpen] = useState(true);
   const [aboutIsOpen, aboutSetIsOpen] = useState(false);
   const [workIsOpen, workSetIsOpen] = useState(false);
@@ -34,6 +40,9 @@ export default function Shortcuts() {
   const [contactCurrentZIndex, contactSetZIndex] = useState();
   const [linksCurrentZIndex, linksSetZIndex] = useState();
   const [miscCurrentZIndex, miscSetZIndex] = useState();
+
+  const [currentLightmodeIcon, setLightmodeIcon] = useState(sunIcon);
+  const [lightOrDark, setModeText] = useState("Light");
 
   const homePrioritize = () => {
     homeSetZIndex(DragCompIndex.index);
@@ -61,6 +70,7 @@ export default function Shortcuts() {
 
   const ContactPrioritize = () => {
     contactSetZIndex(DragCompIndex.index);
+    DragCompIndex.updateIndex();
   };
   const ContactDeprioritize = () => {
     DragCompIndex.updateIndex();
@@ -68,6 +78,7 @@ export default function Shortcuts() {
 
   const LinksPrioritize = () => {
     linksSetZIndex(DragCompIndex.index);
+    DragCompIndex.updateIndex();
   };
   const LinksDeprioritize = () => {
     DragCompIndex.updateIndex();
@@ -75,6 +86,7 @@ export default function Shortcuts() {
 
   const MiscPrioritize = () => {
     miscSetZIndex(DragCompIndex.index);
+    DragCompIndex.updateIndex();
   };
   const MiscDeprioritize = () => {
     DragCompIndex.updateIndex();
@@ -86,8 +98,12 @@ export default function Shortcuts() {
   const contactRef = useRef(null);
   const linksRef = useRef(null);
   const miscRef = useRef(null);
+
+  const toggleTheme = () => {
+    setMode(!Mode);
+  };
   return (
-    <div>
+    <div className={Mode ? "dark" : ""}>
       <div
         className="absolute inset-0 h-screen w-screen"
         style={{ overflow: "hidden" }}
@@ -219,7 +235,7 @@ export default function Shortcuts() {
           </div>
         </Draggable>
       </div>
-      <div className="flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black text-md">
+      <div className="flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black dark:text-white text-md">
         <div className="mt-2 mr-9">
           <div>
             <button
@@ -231,9 +247,13 @@ export default function Shortcuts() {
                 DragCompIndex.updateIndex();
                 homeSetZIndex(DragCompIndex.index);
               }}
-              className="cursor-pointer hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
-              <img className="max-w-20" src={houseIcon} alt="HomeIcon"></img>
+              <img
+                className="max-w-20 transition-all dark:invert-100"
+                src={houseIcon}
+                alt="HomeIcon"
+              ></img>
               <h1>Home</h1>
             </button>
           </div>
@@ -247,10 +267,10 @@ export default function Shortcuts() {
                 DragCompIndex.updateIndex();
                 aboutSetZIndex(DragCompIndex.index);
               }}
-              className="cursor-pointer hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
               <img
-                className="max-w-20"
+                className="max-w-20 transition-all dark:invert-100"
                 src={clipboardIcon}
                 alt="AboutIcon"
               ></img>{" "}
@@ -268,9 +288,13 @@ export default function Shortcuts() {
                 DragCompIndex.updateIndex();
                 workSetZIndex(DragCompIndex.index);
               }}
-              className="cursor-pointer hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
-              <img className="max-w-20" src={houseIcon} alt="FolderIcon"></img>
+              <img
+                className="max-w-20 ml-2 transition-all dark:invert-100"
+                src={folderIcon}
+                alt="FolderIcon"
+              ></img>
               <h1>Work</h1>
             </button>
           </div>
@@ -284,11 +308,11 @@ export default function Shortcuts() {
                 DragCompIndex.updateIndex();
                 linksSetZIndex(DragCompIndex.index);
               }}
-              className="cursor-pointer hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
               <img
-                className="max-w-20"
-                src={houseIcon}
+                className="max-w-20 mt-1 transition-all dark:invert-100"
+                src={linksIcon}
                 alt="ChainlinkIcon"
               ></img>
               <h1>Links</h1>
@@ -304,12 +328,12 @@ export default function Shortcuts() {
                 DragCompIndex.updateIndex();
                 contactSetZIndex(DragCompIndex.index);
               }}
-              className="cursor-pointer hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
               <img
-                className="max-w-20"
-                src={houseIcon}
-                alt="Envelope/Phone Icon"
+                className="max-w-18 pt-2 ml-1 mr-1 transition-all dark:invert-100"
+                src={phoneIcon}
+                alt="PhoneIcon"
               ></img>
               <h1>Contact</h1>
             </button>
@@ -324,37 +348,42 @@ export default function Shortcuts() {
                 DragCompIndex.updateIndex();
                 miscSetZIndex(DragCompIndex.index);
               }}
-              className="cursor-pointer hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
               <img
-                className="max-w-20"
-                src={houseIcon}
-                alt="RecycleBinIcon"
+                className="max-w-18 ml-1 mr-1 pt-2 transition-all dark:invert-100"
+                src={miscIcon}
+                alt="ChestIcon"
               ></img>
               <h1>Misc</h1>
             </button>
           </div>
         </div>
       </div>
-      <div className="flex w-35 absolute justify-self-end justify-center h-screen text-center font-dotoBold text-black text-md z-5">
+      <div className="flex w-35 absolute justify-self-end justify-end mr-3 h-screen text-center font-dotoBold text-black dark:text-white text-md z-5">
         <div className="mt-2">
-          {" "}
           {/*Right Icon Container*/}
           <div>
-            <button className="cursor-pointer hover:bg-blue-300/60">
-              <img className="max-w-20" src={houseIcon} alt="HomeIcon"></img>
-              <h1>Light</h1> {/*Maybe/Maybe not have text*/}
-            </button>
-          </div>
-          <div className="mt-2">
-            <button className="cursor-pointer hover:bg-blue-300/60">
+            <button
+              onClick={() => {
+                toggleTheme();
+
+                if (currentLightmodeIcon == sunIcon) {
+                  setLightmodeIcon(moonIcon);
+                  setModeText("Dark");
+                } else {
+                  setLightmodeIcon(sunIcon);
+                  setModeText("Light");
+                }
+              }}
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
+            >
               <img
-                className="max-w-20"
-                src={clipboardIcon}
-                alt="AboutIcon"
-              ></img>{" "}
-              {/*Add top margin to every element after first one*/}
-              <h1>Mute</h1> {/*Maybe/Maybe not have text*/}
+                className="max-w-20 ml-1 mr-1 mt-2"
+                src={currentLightmodeIcon}
+                alt="LightModeIcon"
+              />
+              <h1>{lightOrDark}</h1>
             </button>
           </div>
         </div>

@@ -15,14 +15,14 @@ export default function WorkWindow({ workOpen, workOnClose }) {
 
   return (
     <div
-      className={`transition-all ${
+      className={`transition-all duration-200 ${
         workOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >
-      <div className="absolute bg-windowBox mb-15 w-205 h-130 drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 outline-black z-20">
+      <div className="absolute bg-windowBox mb-15 w-205 h-130 drop-shadow-2xl/20 dark:drop-shadow-white rounded-sm self-center justify-self-center outline-2 outline-black z-0 dark:bg-darkModeWindow dark:outline-white">
         {/*Change color to whatever works*/}
-        <div className="flex w-full bg-siteGreen h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2">
-          <h1 className="text-3xl font-dotoBold text-white ml-4 m-2 mt-2.5">
+        <div className="flex w-full bg-siteGreen h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2 dark:bg-darkModeGreen dark:outline-white">
+          <h1 className="text-3xl font-dotoBold text-white ml-4 self-center">
             &lt;work&gt;
           </h1>
           <button
@@ -34,9 +34,13 @@ export default function WorkWindow({ workOpen, workOnClose }) {
             </h1>
           </button>
         </div>
-        <div className="flex flex-col justify-start h-115 max-w-full max-h-115 text-wrap overflow-y-auto wrap-anywhere">
+        <div className="text-black dark:text-white flex flex-col justify-start h-115 max-w-full max-h-115 text-wrap overflow-y-auto wrap-anywhere">
           <div className={`self-center mt-2`}>
-            <h1 className={`font-outfit text-[3.5rem]`}>Things I've made!</h1>
+            <h1
+              className={`font-outfit text-[3.5rem] dark:text-shadow-white/30 text-shadow-md`}
+            >
+              Things I've made!
+            </h1>
           </div>
           <hr className="stroke-black opacity-20" />
 
@@ -47,19 +51,19 @@ export default function WorkWindow({ workOpen, workOnClose }) {
             <div>
               {/*Games Section*/}
               <button
-                className={`bg-siteGreen text-white pt-2 pb-2 pl-10 pr-10 rounded-2xl cursor-pointer`}
+                className={`bg-siteGreen dark:bg-darkModeGreen text-white pt-2 pb-2 pl-10 pr-10 rounded-2xl cursor-pointer`}
                 onClick={() => {
                   setGamesOpen(!gamesOpen);
                 }}
               >
-                <div className="flex gap-1 items-center">
+                <div className="flex gap-1 items-center dark:text-shadow-white/30 text-shadow-md">
                   Games
                   <Chevron direction={`${gamesOpen ? "up" : "down"}`} />
                 </div>
               </button>
               <WorkTile isOpen={gamesOpen}>
                 <h1
-                  className={`transition-all duration-300 ease-in-out ${
+                  className={`transition-all duration-300 ease-in-out dark:text-shadow-white/30 text-shadow-md ${
                     gamesOpen
                       ? "text-[1.2rem] opacity-100 mt-2 mb-2"
                       : "text-[0rem] opacity-0"
@@ -67,7 +71,7 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                 >
                   All of my game projects can be found&nbsp;
                   <a href="https://philosofox.itch.io/" target="blank_">
-                    <span className="font-outfitMedium text-green-700 underline hover:text-green-900">
+                    <span className="font-outfitMedium text-green-700 dark:text-green-500 underline hover:text-green-900 dark:hover:text-green-700">
                       here
                     </span>
                   </a>
@@ -77,7 +81,7 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                   className={`grid grid-cols-1 transition-all duration-300 ease-in-out gap-y-10`}
                 >
                   <div
-                    className={`transition-all duration-300 ease-in-out bg-workTileBg ${
+                    className={`transition-all duration-300 ease-in-out bg-workTileBg dark:bg-darkModeTile ${
                       gamesOpen ? "max-w-180 max-h-64" : "max-w-0 max-h-0"
                     }`}
                   >
@@ -85,12 +89,12 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                       <img
                         src={BedmimeImage}
                         alt="BedmimeThumbnail"
-                        className={`self-center outline-5 outline-siteGreen transition-all duration-300 ease-in-out ${
+                        className={`self-center outline-5 outline-siteGreen dark:outline-darkModeGreen transition-all duration-300 ease-in-out ${
                           gamesOpen ? "max-w-9/16" : "max-w-0"
                         }`}
                       />
                       <h1
-                        className={`ml-5 ${
+                        className={`ml-5 dark:text-shadow-white/30 text-shadow-md ${
                           gamesOpen ? "text-[1.3rem] opacity-100" : "hidden"
                         }`}
                       >
@@ -101,7 +105,7 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                     </div>
                   </div>
                   <div
-                    className={`transition-all duration-300 ease-in-out bg-workTileBg ${
+                    className={`transition-all duration-300 ease-in-out bg-workTileBg dark:bg-darkModeTile ${
                       gamesOpen ? "max-w-180 max-h-64" : "max-w-0 max-h-0"
                     }`}
                   >
@@ -109,12 +113,12 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                       <img
                         src={StormchaserImage}
                         alt="StormchaserThumbnail"
-                        className={`self-center outline-5 outline-siteGreen transition-all duration-300 ease-in-out ${
+                        className={`self-center outline-5 outline-siteGreen dark:outline-darkModeGreen transition-all duration-300 ease-in-out ${
                           gamesOpen ? "max-w-7/16" : "max-w-0"
                         }`}
                       />
                       <h1
-                        className={`ml-5 ${
+                        className={`ml-5 dark:text-shadow-white/30 text-shadow-md ${
                           gamesOpen ? "text-[1.3rem] opacity-100" : "hidden"
                         }`}
                       >
@@ -130,12 +134,12 @@ export default function WorkWindow({ workOpen, workOnClose }) {
               <div className="mt-10">
                 {/*Dev Projects Section*/}
                 <button
-                  className={`bg-siteGreen text-white pt-2 pb-2 pl-10 pr-10 rounded-2xl cursor-pointer`}
+                  className={`bg-siteGreen dark:bg-darkModeGreen text-white pt-2 pb-2 pl-10 pr-10 rounded-2xl cursor-pointer`}
                   onClick={() => {
                     setProjectsOpen(!projectsOpen);
                   }}
                 >
-                  <div className="flex gap-1 items-center">
+                  <div className="flex gap-1 items-center dark:text-shadow-white/30 text-shadow-md">
                     Dev Projects
                     <Chevron direction={`${projectsOpen ? "up" : "down"}`} />
                   </div>
@@ -149,7 +153,7 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                     }`}
                   >
                     <div
-                      className={`transition-all duration-300 ease-in-out bg-workTileBg ${
+                      className={`transition-all duration-300 ease-in-out bg-workTileBg dark:bg-darkModeTile ${
                         projectsOpen ? "max-w-180 max-h-64" : "max-w-0 max-h-0"
                       }`}
                     >
@@ -157,12 +161,12 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                         <img
                           src={WebsiteImage}
                           alt="Image of this Website /(o-o)\"
-                          className={`self-center outline-5 outline-siteGreen transition-all duration-300 ease-in-out ${
+                          className={`self-center outline-5 outline-siteGreen dark:outline-darkModeGreen transition-all duration-300 ease-in-out ${
                             projectsOpen ? "max-w-31/64" : "max-w-0"
                           }`}
                         />
                         <h1
-                          className={`ml-5 ${
+                          className={`ml-5 dark:text-shadow-white/30 text-shadow-md ${
                             projectsOpen
                               ? "text-[1.3rem] opacity-100"
                               : "hidden"
@@ -182,12 +186,12 @@ export default function WorkWindow({ workOpen, workOnClose }) {
               <div className="mt-10">
                 {/*Other Stuff Section*/}
                 <button
-                  className={`bg-siteGreen text-white pt-2 pb-2 pl-10 pr-10 rounded-2xl cursor-pointer`}
+                  className={`bg-siteGreen dark:bg-darkModeGreen text-white pt-2 pb-2 pl-10 pr-10 rounded-2xl cursor-pointer`}
                   onClick={() => {
                     setOtherOpen(!otherOpen);
                   }}
                 >
-                  <div className="flex gap-1 items-center">
+                  <div className="flex gap-1 items-center dark:text-shadow-white/30 text-shadow-md">
                     Other Stuff
                     <Chevron direction={`${otherOpen ? "up" : "down"}`} />
                   </div>
@@ -201,7 +205,7 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                     }`}
                   >
                     <div
-                      className={`transition-all duration-300 ease-in-out bg-workTileBg ${
+                      className={`transition-all duration-300 ease-in-out bg-workTileBg dark:bg-darkModeTile ${
                         otherOpen ? "max-w-180 max-h-58" : "max-w-0 max-h-0"
                       }`}
                     >
@@ -210,10 +214,10 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                           src={BlenderImage}
                           alt="Blender Project Images"
                           loading="lazy"
-                          className={`self-center outline-5 max-w-31/64 outline-siteGreen`}
+                          className={`self-center outline-5 max-w-31/64 outline-siteGreen dark:outline-darkModeGreen`}
                         />
                         <h1
-                          className={`ml-5 transition-all duration-300 ease-in-out ${
+                          className={`ml-5 transition-all duration-300 ease-in-out dark:text-shadow-white/30 text-shadow-md ${
                             otherOpen
                               ? "text-[1.3rem] opacity-100"
                               : "text-0 hidden"
@@ -229,14 +233,14 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                     </div>
                   </div>
                   <div
-                    className={`grid grid-cols-1 justify-items-center transition-all duration-300 ease-in-out ${
+                    className={`grid grid-cols-1 justify-items-center transition-all duration-300 ease-in-out dark:text-shadow-white/30 text-shadow-md ${
                       otherOpen
                         ? "opacity-100 mt-5 gap-y-10"
                         : "opacity-0 text-[0rem] mt-0 gap-y-0"
                     }`}
                   >
                     <div
-                      className={`mt-5 transition-all duration-300 ease-in-out bg-workTileBg ${
+                      className={`mt-5 transition-all duration-300 ease-in-out bg-workTileBg dark:bg-darkModeTile ${
                         otherOpen ? "max-w-180 max-h-58" : "max-w-0 max-h-0"
                       }`}
                     >
@@ -245,7 +249,7 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                           src={BlenderImage}
                           alt="Blender Project Images"
                           loading="lazy"
-                          className={`self-center outline-5 max-w-31/64 outline-siteGreen`}
+                          className={`self-center outline-5 max-w-31/64 outline-siteGreen dark:outline-darkModeGreen`}
                         />
                         <h1
                           className={`ml-5 transition-all duration-300 ease-in-out ${
