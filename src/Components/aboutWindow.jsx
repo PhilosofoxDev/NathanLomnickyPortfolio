@@ -168,7 +168,7 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
                 <h1 className="mt-2">
                   Under the name&nbsp;
                   <a href="https://philosofoxdev.carrd.co/" target="_blank">
-                    <span className="text-orange-400 dark:text-orange-600 font-outfitMedium underline hover:text-orange-600 dark:hover:text-orange-700">
+                    <span className="text-orange-400 dark:text-orange-500 font-outfitMedium underline hover:text-orange-600 dark:hover:text-orange-700">
                       Philosofox
                     </span>
                   </a>

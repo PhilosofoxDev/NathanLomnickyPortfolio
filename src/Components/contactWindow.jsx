@@ -12,10 +12,10 @@ export default function ContactWindow({ contactOpen, contactOnClose }) {
         contactOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >
-      <div className="absolute bg-windowBox w-205 mt-15 h-130 drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 outline-black z-20">
+      <div className="absolute bg-windowBox mt-15 w-205 h-130 drop-shadow-2xl/20 dark:drop-shadow-white rounded-sm self-center justify-self-center outline-2 outline-black z-0 dark:bg-darkModeWindow dark:outline-white">
         {/*Change color to whatever works*/}
-        <div className="flex w-full bg-siteGreen h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2">
-          <h1 className="text-3xl font-dotoBold text-white ml-4 m-2 mt-F.5">
+        <div className="flex w-full bg-siteGreen h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2 dark:bg-darkModeGreen dark:outline-white">
+          <h1 className="text-3xl font-dotoBold text-white ml-4 self-center">
             &lt;contact&gt;
           </h1>
           <button
@@ -29,11 +29,15 @@ export default function ContactWindow({ contactOpen, contactOnClose }) {
         </div>
         <div className="flex flex-col justify-center max-h-115 max-w-full text-wrap overflow-y-auto wrap-anywhere">
           <div className={`text-center`}>
-            <h1 className={`font-outfit text-[3.5rem]`}>Reach out to me!</h1>
+            <h1
+              className={`font-outfit text-[3.5rem] dark:text-white dark:text-shadow-white/30 text-shadow-md`}
+            >
+              Reach out to me!
+            </h1>
           </div>
           <hr className="stroke-black opacity-20" />
           <div
-            className={`grid grid-cols-1 ml-10 mr-10 text-center justify-items-center overflow-y-auto font-outfit text-2xl`}
+            className={`grid grid-cols-1 ml-10 mr-10 text-center justify-items-center overflow-y-auto font-outfit text-2xl dark:text-white dark:text-shadow-white/30 text-shadow-md`}
           >
             <h1 className="ml-20 mr-20 mt-10">
               You can reach me at&nbsp;
@@ -49,13 +53,13 @@ export default function ContactWindow({ contactOpen, contactOnClose }) {
                   setTooltipText("Copy to Clipboard");
                 }}
               >
-                <span className="font-outfitMedium text-green-700 underline hover:text-green-900 hover:cursor-pointer">
+                <span className="font-outfitMedium text-green-700 dark:text-green-500 underline hover:text-green-900 dark:hover:text-green-600 hover:cursor-pointer">
                   NathanNikc7775@gmail.com
                 </span>
               </a>
               &nbsp;or click&nbsp;
               <a href="mailto:NathanNikc7775@gmail.com" target="_blank">
-                <span className="text-green-700 font-outfitMedium underline hover:text-green-900">
+                <span className="text-green-700 dark:text-green-500 underline hover:text-green-900 dark:hover:text-green-600">
                   here
                 </span>
               </a>

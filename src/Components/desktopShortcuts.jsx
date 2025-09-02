@@ -247,9 +247,13 @@ export default function Shortcuts({ Mode, setMode }) {
                 DragCompIndex.updateIndex();
                 homeSetZIndex(DragCompIndex.index);
               }}
-              className="cursor-pointer hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
-              <img className="max-w-20" src={houseIcon} alt="HomeIcon"></img>
+              <img
+                className="max-w-20 transition-all dark:invert-100"
+                src={houseIcon}
+                alt="HomeIcon"
+              ></img>
               <h1>Home</h1>
             </button>
           </div>
@@ -263,10 +267,10 @@ export default function Shortcuts({ Mode, setMode }) {
                 DragCompIndex.updateIndex();
                 aboutSetZIndex(DragCompIndex.index);
               }}
-              className="cursor-pointer hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
               <img
-                className="max-w-20"
+                className="max-w-20 transition-all dark:invert-100"
                 src={clipboardIcon}
                 alt="AboutIcon"
               ></img>{" "}
@@ -284,10 +288,10 @@ export default function Shortcuts({ Mode, setMode }) {
                 DragCompIndex.updateIndex();
                 workSetZIndex(DragCompIndex.index);
               }}
-              className="cursor-pointer hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
               <img
-                className="max-w-20 ml-2"
+                className="max-w-20 ml-2 transition-all dark:invert-100"
                 src={folderIcon}
                 alt="FolderIcon"
               ></img>
@@ -304,10 +308,10 @@ export default function Shortcuts({ Mode, setMode }) {
                 DragCompIndex.updateIndex();
                 linksSetZIndex(DragCompIndex.index);
               }}
-              className="cursor-pointer hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
               <img
-                className="max-w-20 mt-1"
+                className="max-w-20 mt-1 transition-all dark:invert-100"
                 src={linksIcon}
                 alt="ChainlinkIcon"
               ></img>
@@ -324,10 +328,10 @@ export default function Shortcuts({ Mode, setMode }) {
                 DragCompIndex.updateIndex();
                 contactSetZIndex(DragCompIndex.index);
               }}
-              className="cursor-pointer hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
               <img
-                className="max-w-18 pt-2 ml-1 mr-1"
+                className="max-w-18 pt-2 ml-1 mr-1 transition-all dark:invert-100"
                 src={phoneIcon}
                 alt="PhoneIcon"
               ></img>
@@ -344,10 +348,10 @@ export default function Shortcuts({ Mode, setMode }) {
                 DragCompIndex.updateIndex();
                 miscSetZIndex(DragCompIndex.index);
               }}
-              className="cursor-pointer hover:bg-blue-300/60"
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
               <img
-                className="max-w-18 ml-1 mr-1 pt-2"
+                className="max-w-18 ml-1 mr-1 pt-2 transition-all dark:invert-100"
                 src={miscIcon}
                 alt="ChestIcon"
               ></img>
@@ -372,7 +376,7 @@ export default function Shortcuts({ Mode, setMode }) {
                   setModeText("Light");
                 }
               }}
-              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-600/60"
+              className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
               <img
                 className="max-w-20 ml-1 mr-1 mt-2"
