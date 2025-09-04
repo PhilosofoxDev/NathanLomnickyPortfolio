@@ -47,6 +47,7 @@ export default function LinksWindow({ linksOpen, linksOnClose }) {
               <div className="flex flex-col items-center">
                 <img
                   src={KissingDuckPFP}
+                  loading="lazy"
                   className="rounded-full size-25 outline-green-700 outline-6 dark:outline-green-500"
                 />
                 <a href="" target="blank_">
@@ -58,6 +59,7 @@ export default function LinksWindow({ linksOpen, linksOnClose }) {
               <div className="flex flex-col items-center">
                 <img
                   src={LinkedinLogo}
+                  loading="lazy"
                   className="rounded-full size-25 outline-blue-600 dark:outline-blue-400 outline-6"
                 />
                 <a
@@ -72,6 +74,7 @@ export default function LinksWindow({ linksOpen, linksOnClose }) {
               <div className="flex flex-col items-center">
                 <img
                   src={HandshakeLogo}
+                  loading="lazy"
                   className="rounded-full size-25 outline-green-600 dark:outline-green-500 outline-6"
                 />
 
@@ -87,6 +90,7 @@ export default function LinksWindow({ linksOpen, linksOnClose }) {
               <div className="flex flex-col items-center">
                 <img
                   src={InstaLogo}
+                  loading="lazy"
                   className="rounded-full size-25 outline-rose-700 dark:outline-rose-500 outline-5"
                 />
                 <a
@@ -103,6 +107,7 @@ export default function LinksWindow({ linksOpen, linksOnClose }) {
               <div className="flex flex-col items-center">
                 <img
                   src={ItchLogo}
+                  loading="lazy"
                   className="rounded-full size-25 outline-red-700 dark:outline-red-600 outline-6"
                 />
 
@@ -115,6 +120,7 @@ export default function LinksWindow({ linksOpen, linksOnClose }) {
               <div className="flex flex-col items-center">
                 <img
                   src={GithubLogo}
+                  loading="lazy"
                   className="rounded-full size-25 outline-purple-700 dark:outline-purple-400 outline-5"
                 />
                 <a href="https://github.com/PhilosofoxDev" target="blank_">
@@ -126,6 +132,7 @@ export default function LinksWindow({ linksOpen, linksOnClose }) {
               <div className="flex flex-col items-center">
                 <img
                   src={PhilosofoxPFP}
+                  loading="lazy"
                   className="rounded-full size-25 outline-orange-600 dark:outline-orange-500 outline-6"
                 />
 

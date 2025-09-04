@@ -186,7 +186,11 @@ export default function Shortcuts({ Mode, setMode }) {
         >
           <div
             ref={linksRef}
-            style={{ zIndex: linksCurrentZIndex, position: "absolute" }}
+            style={{
+              zIndex: linksCurrentZIndex,
+              position: "absolute",
+              willChange: "transform",
+            }}
           >
             <LinksWindow
               linksOpen={linksIsOpen}

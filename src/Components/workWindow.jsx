@@ -198,6 +198,9 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                 </button>
                 <WorkTile isOpen={otherOpen}>
                   <div
+                    style={{
+                      willChange: "transform",
+                    }}
                     className={`grid grid-cols-1 justify-items-center transition-all duration-300 ease-in-out ${
                       otherOpen
                         ? "opacity-100 mt-5 gap-y-10"
@@ -233,6 +236,9 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                     </div>
                   </div>
                   <div
+                    style={{
+                      willChange: "transform",
+                    }}
                     className={`grid grid-cols-1 justify-items-center transition-all duration-300 ease-in-out dark:text-shadow-white/30 text-shadow-md ${
                       otherOpen
                         ? "opacity-100 mt-5 gap-y-10"
