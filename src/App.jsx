@@ -6,13 +6,14 @@ import React, { useState } from "react";
 
 function App() {
   const [isDark, setIsDark] = useState(false);
+
   return (
-    <div className={isDark ? "dark" : ""}>
+    <div className={`${isDark ? "dark" : ""}`}>
       <div className="select-none z-100">
         <div className="flex absolute items-end justify-start w-screen h-screen">
           <Ground Mode={isDark ? true : false} />
         </div>
-        <div className="">
+        <div>
           <Shortcuts Mode={isDark} setMode={setIsDark} />
         </div>
       </div>

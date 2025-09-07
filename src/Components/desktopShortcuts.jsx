@@ -1,5 +1,6 @@
 import "tailwindcss";
 import { useState } from "react";
+import Warning from "./warning";
 import Window from "./mainwindow";
 import AboutWindow from "./aboutWindow";
 import WorkWindow from "./workWindow";
@@ -27,6 +28,7 @@ class DragCompIndex {
 }
 
 export default function Shortcuts({ Mode, setMode }) {
+  const [warnIsOpen, warnSetIsOpen] = useState(true);
   const [homeIsOpen, homeSetIsOpen] = useState(true);
   const [aboutIsOpen, aboutSetIsOpen] = useState(false);
   const [workIsOpen, workSetIsOpen] = useState(false);
@@ -34,6 +36,7 @@ export default function Shortcuts({ Mode, setMode }) {
   const [linksIsOpen, linksSetIsOpen] = useState(false);
   const [miscIsOpen, miscSetIsOpen] = useState(false);
 
+  const [warnCurrentZIndex, warnSetZIndex] = useState();
   const [homeCurrentZIndex, homeSetZIndex] = useState();
   const [aboutCurrentZIndex, aboutSetZIndex] = useState();
   const [workCurrentZIndex, workSetZIndex] = useState();
@@ -43,6 +46,14 @@ export default function Shortcuts({ Mode, setMode }) {
 
   const [currentLightmodeIcon, setLightmodeIcon] = useState(sunIcon);
   const [lightOrDark, setModeText] = useState("Light");
+
+  const warnPrioritize = () => {
+    warnSetZIndex(DragCompIndex.index);
+    DragCompIndex.updateIndex();
+  };
+  const warnDeprioritize = () => {
+    DragCompIndex.updateIndex();
+  };
 
   const homePrioritize = () => {
     homeSetZIndex(DragCompIndex.index);
@@ -92,6 +103,7 @@ export default function Shortcuts({ Mode, setMode }) {
     DragCompIndex.updateIndex();
   };
 
+  const warnRef = useRef(null);
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const workRef = useRef(null);
@@ -108,6 +120,30 @@ export default function Shortcuts({ Mode, setMode }) {
         className="absolute inset-0 h-screen w-screen"
         style={{ overflow: "hidden" }}
       >
+        <Draggable
+          onStart={warnPrioritize}
+          onStop={warnDeprioritize}
+          nodeRef={warnRef}
+          bounds="parent"
+          defaultPosition={{
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+          }}
+        >
+          <div
+            ref={warnRef}
+            style={{
+              zIndex: warnCurrentZIndex,
+              position: "absolute",
+            }}
+          >
+            <Warning
+              className="relative select-none z-100"
+              warnOpen={warnIsOpen}
+              warnOnClose={() => warnSetIsOpen(false)}
+            />
+          </div>
+        </Draggable>
         <Draggable
           onStart={homePrioritize}
           onStop={homeDeprioritize}
@@ -126,7 +162,7 @@ export default function Shortcuts({ Mode, setMode }) {
             }}
           >
             <Window
-              className="relative select-none z-100"
+              className="relative select-none z-200"
               homeOpen={homeIsOpen}
               homeOnClose={() => homeSetIsOpen(false)}
             />
@@ -148,7 +184,6 @@ export default function Shortcuts({ Mode, setMode }) {
             style={{ zIndex: aboutCurrentZIndex, position: "absolute" }}
           >
             <AboutWindow
-              className="relative select-none z-100"
               aboutOpen={aboutIsOpen}
               aboutOnClose={() => aboutSetIsOpen(false)}
             />
@@ -239,7 +274,9 @@ export default function Shortcuts({ Mode, setMode }) {
           </div>
         </Draggable>
       </div>
-      <div className="flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black dark:text-white text-md">
+      <div
+        className={`flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black dark:text-white text-md`}
+      >
         <div className="mt-2 mr-9">
           <div>
             <button
