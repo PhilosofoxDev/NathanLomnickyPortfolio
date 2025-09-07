@@ -12,10 +12,10 @@ export default function ContactWindow({ contactOpen, contactOnClose }) {
         contactOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >
-      <div className="absolute bg-windowBox mt-15 w-205 h-130 drop-shadow-2xl/20 dark:drop-shadow-white rounded-sm self-center justify-self-center outline-2 outline-black z-0 dark:bg-darkModeWindow dark:outline-white">
+      <div className="absolute shrink bg-windowBox dark:bg-darkModeWindow mt-15 w-120 h-90 lg:w-205 lg:h-130 dark:drop-shadow-white drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 dark:outline-white outline-black z-100">
         {/*Change color to whatever works*/}
-        <div className="flex w-full bg-siteGreen h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2 dark:bg-darkModeGreen dark:outline-white">
-          <h1 className="text-3xl font-dotoBold text-white ml-4 self-center">
+        <div className="flex w-full items-center bg-siteGreen h-12 lg:h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2 dark:bg-darkModeGreen dark:outline-white">
+          <h1 className="text-3xl font-dotoBold text-white ml-4 mb-0.5">
             &lt;contact&gt;
           </h1>
           <button
@@ -30,16 +30,16 @@ export default function ContactWindow({ contactOpen, contactOnClose }) {
         <div className="flex flex-col justify-center max-h-115 max-w-full text-wrap overflow-y-auto wrap-anywhere">
           <div className={`text-center`}>
             <h1
-              className={`font-outfit text-[3.5rem] dark:text-white dark:text-shadow-white/30 text-shadow-md`}
+              className={`font-outfit text-[2.1rem] lg:text-[3.5rem] dark:text-white dark:text-shadow-white/30 text-shadow-md`}
             >
               Reach out to me!
             </h1>
           </div>
           <hr className="stroke-black opacity-20" />
           <div
-            className={`grid grid-cols-1 ml-10 mr-10 text-center justify-items-center overflow-y-auto font-outfit text-2xl dark:text-white dark:text-shadow-white/30 text-shadow-md`}
+            className={`grid grid-cols-1 lg:ml-10 lg:mr-10 text-center justify-items-center overflow-y-auto font-outfit text-[1.2rem] lg:text-2xl dark:text-white dark:text-shadow-white/30 text-shadow-md`}
           >
-            <h1 className="ml-20 mr-20 mt-10">
+            <h1 className="ml-3 mr-3 lg:ml-20 lg:mr-20 lg:mt-10 mt-5">
               You can reach me at&nbsp;
               <Tooltip id="copy-email-tooltip" />
               <a
@@ -65,8 +65,8 @@ export default function ContactWindow({ contactOpen, contactOnClose }) {
               </a>
               &nbsp;to email me directly with whatever email app you prefer.
             </h1>
-            <h1 className="mt-10 font-outfitBold">|| OR ||</h1>
-            <h1 className="mt-10 mr-30 ml-30">
+            <h1 className="mt-5 lg:mt-10 font-outfitBold">|| OR ||</h1>
+            <h1 className="mt-5 lg:mt-10 ml-3 mr-3 lg:mr-30 lg:ml-30">
               You can also contact me on any of the socials listed in the
               "links" window.
             </h1>
