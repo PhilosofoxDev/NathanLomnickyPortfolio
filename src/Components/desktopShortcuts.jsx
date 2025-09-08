@@ -1,5 +1,6 @@
 import "tailwindcss";
-import { useState } from "react";
+import React, { useRef, useState } from "react";
+import Template from "./windowTemplate";
 import Warning from "./warning";
 import Window from "./mainwindow";
 import AboutWindow from "./aboutWindow";
@@ -15,10 +16,6 @@ import phoneIcon from "../assets/images/ContactIcon.png";
 import miscIcon from "../assets/images/MiscIcon.png";
 import sunIcon from "../assets/images/SunLightMode.png";
 import moonIcon from "../assets/images/MoonDarkMode.png";
-import App from "../App";
-import React, { useRef } from "react";
-import ReactDOM from "react-dom";
-import Draggable from "react-draggable";
 
 class DragCompIndex {
   static index = 10;
@@ -32,16 +29,16 @@ export default function Shortcuts({ Mode, setMode }) {
   const [homeIsOpen, homeSetIsOpen] = useState(true);
   const [aboutIsOpen, aboutSetIsOpen] = useState(false);
   const [workIsOpen, workSetIsOpen] = useState(false);
-  const [contactIsOpen, contactSetIsOpen] = useState(false);
   const [linksIsOpen, linksSetIsOpen] = useState(false);
+  const [contactIsOpen, contactSetIsOpen] = useState(false);
   const [miscIsOpen, miscSetIsOpen] = useState(false);
 
   const [warnCurrentZIndex, warnSetZIndex] = useState();
   const [homeCurrentZIndex, homeSetZIndex] = useState();
   const [aboutCurrentZIndex, aboutSetZIndex] = useState();
   const [workCurrentZIndex, workSetZIndex] = useState();
-  const [contactCurrentZIndex, contactSetZIndex] = useState();
   const [linksCurrentZIndex, linksSetZIndex] = useState();
+  const [contactCurrentZIndex, contactSetZIndex] = useState();
   const [miscCurrentZIndex, miscSetZIndex] = useState();
 
   const [currentLightmodeIcon, setLightmodeIcon] = useState(sunIcon);
@@ -107,8 +104,8 @@ export default function Shortcuts({ Mode, setMode }) {
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const workRef = useRef(null);
-  const contactRef = useRef(null);
   const linksRef = useRef(null);
+  const contactRef = useRef(null);
   const miscRef = useRef(null);
 
   const toggleTheme = () => {
@@ -120,159 +117,85 @@ export default function Shortcuts({ Mode, setMode }) {
         className="absolute inset-0 h-screen w-screen"
         style={{ overflow: "hidden" }}
       >
-        <Draggable
-          onStart={warnPrioritize}
-          onStop={warnDeprioritize}
-          nodeRef={warnRef}
-          bounds="parent"
-          defaultPosition={{
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 2,
-          }}
+        <Template
+          prioritize={warnPrioritize}
+          deprioritize={warnDeprioritize}
+          thisRef={warnRef}
+          zIndex={warnCurrentZIndex}
         >
-          <div
-            ref={warnRef}
-            style={{
-              zIndex: warnCurrentZIndex,
-              position: "absolute",
-            }}
-          >
-            <Warning
-              className="relative select-none z-100"
-              warnOpen={warnIsOpen}
-              warnOnClose={() => warnSetIsOpen(false)}
-            />
-          </div>
-        </Draggable>
-        <Draggable
-          onStart={homePrioritize}
-          onStop={homeDeprioritize}
-          nodeRef={homeRef}
-          bounds="parent"
-          defaultPosition={{
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 2,
-          }}
+          <Warning
+            className="relative select-none z-100"
+            warnOpen={warnIsOpen}
+            warnOnClose={() => warnSetIsOpen(false)}
+          />
+        </Template>
+        <Template
+          prioritize={homePrioritize}
+          deprioritize={homeDeprioritize}
+          thisRef={homeRef}
+          zIndex={homeCurrentZIndex}
         >
-          <div
-            ref={homeRef}
-            style={{
-              zIndex: homeCurrentZIndex,
-              position: "absolute",
-            }}
-          >
-            <Window
-              className="relative select-none z-200"
-              homeOpen={homeIsOpen}
-              homeOnClose={() => homeSetIsOpen(false)}
-            />
-          </div>
-        </Draggable>
-
-        <Draggable
-          onStart={AboutPrioritize}
-          onStop={AboutDeprioritize}
-          nodeRef={aboutRef}
-          bounds="parent"
-          defaultPosition={{
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 2,
-          }}
+          <Window
+            className="relative select-none z-200"
+            homeOpen={homeIsOpen}
+            homeOnClose={() => homeSetIsOpen(false)}
+          />
+        </Template>
+        <Template
+          prioritize={AboutPrioritize}
+          deprioritize={AboutDeprioritize}
+          thisRef={aboutRef}
+          zIndex={aboutCurrentZIndex}
         >
-          <div
-            ref={aboutRef}
-            style={{ zIndex: aboutCurrentZIndex, position: "absolute" }}
-          >
-            <AboutWindow
-              aboutOpen={aboutIsOpen}
-              aboutOnClose={() => aboutSetIsOpen(false)}
-            />
-          </div>
-        </Draggable>
-        <Draggable
-          onStart={WorkPrioritize}
-          onStop={WorkDeprioritize}
-          nodeRef={workRef}
-          bounds="parent"
-          defaultPosition={{
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 2,
-          }}
+          <AboutWindow
+            aboutOpen={aboutIsOpen}
+            aboutOnClose={() => aboutSetIsOpen(false)}
+          />
+        </Template>
+        <Template
+          prioritize={WorkPrioritize}
+          deprioritize={WorkDeprioritize}
+          thisRef={workRef}
+          zIndex={workCurrentZIndex}
         >
-          <div
-            ref={workRef}
-            style={{ zIndex: workCurrentZIndex, position: "absolute" }}
-          >
-            <WorkWindow
-              workOpen={workIsOpen}
-              workOnClose={() => workSetIsOpen(false)}
-            />
-          </div>
-        </Draggable>
-        <Draggable
-          onStart={LinksPrioritize}
-          onStop={LinksDeprioritize}
-          nodeRef={linksRef}
-          bounds="parent"
-          defaultPosition={{
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 2,
-          }}
+          <WorkWindow
+            workOpen={workIsOpen}
+            workOnClose={() => workSetIsOpen(false)}
+          />
+        </Template>
+        <Template
+          prioritize={LinksPrioritize}
+          deprioritize={LinksDeprioritize}
+          thisRef={linksRef}
+          zIndex={linksCurrentZIndex}
         >
-          <div
-            ref={linksRef}
-            style={{
-              zIndex: linksCurrentZIndex,
-              position: "absolute",
-              willChange: "transform",
-            }}
-          >
-            <LinksWindow
-              linksOpen={linksIsOpen}
-              linksOnClose={() => linksSetIsOpen(false)}
-            />
-          </div>
-        </Draggable>
-        <Draggable
-          onStart={ContactPrioritize}
-          onStop={ContactDeprioritize}
-          nodeRef={contactRef}
-          bounds="parent"
-          defaultPosition={{
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 2,
-          }}
+          <LinksWindow
+            linksOpen={linksIsOpen}
+            linksOnClose={() => linksSetIsOpen(false)}
+          />
+        </Template>
+        <Template
+          prioritize={ContactPrioritize}
+          deprioritize={ContactDeprioritize}
+          thisRef={contactRef}
+          zIndex={contactCurrentZIndex}
         >
-          <div
-            ref={contactRef}
-            style={{ zIndex: contactCurrentZIndex, position: "absolute" }}
-          >
-            <ContactWindow
-              contactOpen={contactIsOpen}
-              contactOnClose={() => contactSetIsOpen(false)}
-            />
-          </div>
-        </Draggable>
-        <Draggable
-          onStart={MiscPrioritize}
-          onStop={MiscDeprioritize}
-          nodeRef={miscRef}
-          bounds="parent"
-          defaultPosition={{
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 2,
-          }}
+          <ContactWindow
+            contactOpen={contactIsOpen}
+            contactOnClose={() => contactSetIsOpen(false)}
+          />
+        </Template>
+        <Template
+          prioritize={MiscPrioritize}
+          deprioritize={MiscDeprioritize}
+          thisRef={miscRef}
+          zIndex={miscCurrentZIndex}
         >
-          <div
-            ref={miscRef}
-            style={{ zIndex: miscCurrentZIndex, position: "absolute" }}
-          >
-            <MiscWindow
-              miscOpen={miscIsOpen}
-              miscOnClose={() => miscSetIsOpen(false)}
-            />
-          </div>
-        </Draggable>
+          <MiscWindow
+            miscOpen={miscIsOpen}
+            miscOnClose={() => miscSetIsOpen(false)}
+          />
+        </Template>
       </div>
       <div
         className={`flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black dark:text-white text-md`}
