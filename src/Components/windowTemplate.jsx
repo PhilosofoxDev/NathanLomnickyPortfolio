@@ -7,7 +7,10 @@ export default function Template({
   deprioritize,
   thisRef,
   zIndex,
+  locked,
+  lockPos,
   children,
+  className,
 }) {
   return (
     <Draggable
@@ -15,13 +18,13 @@ export default function Template({
       onStop={deprioritize}
       nodeRef={thisRef}
       bounds="parent"
-      defaultPosition={{
-        x: window.innerWidth / 2,
-        y: window.innerHeight / 2,
-      }}
+      disabled={locked}
+      position={locked ? lockPos : null}
+      defaultPosition={{ x: window.innerWidth / 2, y: window.innerHeight / 2 }}
     >
       <div
         ref={thisRef}
+        className={className}
         style={{
           zIndex: zIndex,
           position: "absolute",

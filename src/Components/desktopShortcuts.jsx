@@ -1,5 +1,5 @@
 import "tailwindcss";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Template from "./windowTemplate";
 import Warning from "./warning";
 import Window from "./mainwindow";
@@ -25,7 +25,6 @@ class DragCompIndex {
 }
 
 export default function Shortcuts({ Mode, setMode }) {
-  const [warnIsOpen, warnSetIsOpen] = useState(true);
   const [homeIsOpen, homeSetIsOpen] = useState(true);
   const [aboutIsOpen, aboutSetIsOpen] = useState(false);
   const [workIsOpen, workSetIsOpen] = useState(false);
@@ -33,7 +32,6 @@ export default function Shortcuts({ Mode, setMode }) {
   const [contactIsOpen, contactSetIsOpen] = useState(false);
   const [miscIsOpen, miscSetIsOpen] = useState(false);
 
-  const [warnCurrentZIndex, warnSetZIndex] = useState();
   const [homeCurrentZIndex, homeSetZIndex] = useState();
   const [aboutCurrentZIndex, aboutSetZIndex] = useState();
   const [workCurrentZIndex, workSetZIndex] = useState();
@@ -43,14 +41,8 @@ export default function Shortcuts({ Mode, setMode }) {
 
   const [currentLightmodeIcon, setLightmodeIcon] = useState(sunIcon);
   const [lightOrDark, setModeText] = useState("Light");
-
-  const warnPrioritize = () => {
-    warnSetZIndex(DragCompIndex.index);
-    DragCompIndex.updateIndex();
-  };
-  const warnDeprioritize = () => {
-    DragCompIndex.updateIndex();
-  };
+  const [isLocked, setIsLocked] = useState(false);
+  const [lockPos, setLockPos] = useState(null);
 
   const homePrioritize = () => {
     homeSetZIndex(DragCompIndex.index);
@@ -100,7 +92,6 @@ export default function Shortcuts({ Mode, setMode }) {
     DragCompIndex.updateIndex();
   };
 
-  const warnRef = useRef(null);
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const workRef = useRef(null);
@@ -111,6 +102,23 @@ export default function Shortcuts({ Mode, setMode }) {
   const toggleTheme = () => {
     setMode(!Mode);
   };
+
+  useEffect(() => {
+    const getResize = () => {
+      if (window.innerWidth < 1024) {
+        setIsLocked(true);
+        setLockPos({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+      } else {
+        setIsLocked(false);
+        setLockPos(null);
+      }
+    };
+
+    getResize();
+    window.addEventListener("resize", getResize);
+
+    return () => window.removeEventListener("resize", getResize);
+  }, []);
   return (
     <div className={Mode ? "dark" : ""}>
       <div
@@ -118,25 +126,15 @@ export default function Shortcuts({ Mode, setMode }) {
         style={{ overflow: "hidden" }}
       >
         <Template
-          prioritize={warnPrioritize}
-          deprioritize={warnDeprioritize}
-          thisRef={warnRef}
-          zIndex={warnCurrentZIndex}
-        >
-          <Warning
-            className="relative select-none z-100"
-            warnOpen={warnIsOpen}
-            warnOnClose={() => warnSetIsOpen(false)}
-          />
-        </Template>
-        <Template
           prioritize={homePrioritize}
           deprioritize={homeDeprioritize}
           thisRef={homeRef}
           zIndex={homeCurrentZIndex}
+          locked={isLocked}
+          lockPos={lockPos}
         >
           <Window
-            className="relative select-none z-200"
+            className="select-none z-200"
             homeOpen={homeIsOpen}
             homeOnClose={() => homeSetIsOpen(false)}
           />
@@ -146,6 +144,8 @@ export default function Shortcuts({ Mode, setMode }) {
           deprioritize={AboutDeprioritize}
           thisRef={aboutRef}
           zIndex={aboutCurrentZIndex}
+          locked={isLocked}
+          lockPos={lockPos}
         >
           <AboutWindow
             aboutOpen={aboutIsOpen}
@@ -157,6 +157,8 @@ export default function Shortcuts({ Mode, setMode }) {
           deprioritize={WorkDeprioritize}
           thisRef={workRef}
           zIndex={workCurrentZIndex}
+          locked={isLocked}
+          lockPos={lockPos}
         >
           <WorkWindow
             workOpen={workIsOpen}
@@ -168,6 +170,8 @@ export default function Shortcuts({ Mode, setMode }) {
           deprioritize={LinksDeprioritize}
           thisRef={linksRef}
           zIndex={linksCurrentZIndex}
+          locked={isLocked}
+          lockPos={lockPos}
         >
           <LinksWindow
             linksOpen={linksIsOpen}
@@ -179,6 +183,8 @@ export default function Shortcuts({ Mode, setMode }) {
           deprioritize={ContactDeprioritize}
           thisRef={contactRef}
           zIndex={contactCurrentZIndex}
+          locked={isLocked}
+          lockPos={lockPos}
         >
           <ContactWindow
             contactOpen={contactIsOpen}
@@ -190,6 +196,8 @@ export default function Shortcuts({ Mode, setMode }) {
           deprioritize={MiscDeprioritize}
           thisRef={miscRef}
           zIndex={miscCurrentZIndex}
+          locked={isLocked}
+          lockPos={lockPos}
         >
           <MiscWindow
             miscOpen={miscIsOpen}
@@ -198,9 +206,9 @@ export default function Shortcuts({ Mode, setMode }) {
         </Template>
       </div>
       <div
-        className={`flex w-35 absolute justify-center h-screen text-center font-dotoBold text-black dark:text-white text-md`}
+        className={`not-lg:flex not-lg:flex-col not-lg:justify-end not-lg:items-center lg:flex lg:w-35 absolute lg:justify-center not-lg:justify-items-center h-screen w-screen lg:text-center font-dotoBold text-black dark:text-white text-md`}
       >
-        <div className="mt-2 mr-9">
+        <div className="transition-all not-lg:bg-black/20 dark:not-lg:bg-white/20 not-lg:pr-5 not-lg:pl-5 not-lg:align-bottom not-lg:grid not-lg:grid-cols-3 justify-center mt-2 lg:mr-9 not-lg:mb-10 not-lg:gap-x-10">
           <div>
             <button
               onDoubleClick={() => {
@@ -214,11 +222,11 @@ export default function Shortcuts({ Mode, setMode }) {
               className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
               <img
-                className="max-w-20 transition-all dark:invert-100"
+                className="transition-all max-w-20 dark:invert-100"
                 src={houseIcon}
                 alt="HomeIcon"
               ></img>
-              <h1>Home</h1>
+              <h1 className="not-lg:pt-[6.5px]">Home</h1>
             </button>
           </div>
           <div className="mt-2">
@@ -275,7 +283,7 @@ export default function Shortcuts({ Mode, setMode }) {
               className="cursor-pointer hover:bg-blue-300/60 dark:hover:bg-blue-500/60"
             >
               <img
-                className="max-w-20 mt-1 transition-all dark:invert-100"
+                className="transition not-lg:w-19 w-20 mt-1 dark:invert-100"
                 src={linksIcon}
                 alt="ChainlinkIcon"
               ></img>
@@ -324,7 +332,7 @@ export default function Shortcuts({ Mode, setMode }) {
           </div>
         </div>
       </div>
-      <div className="flex w-35 absolute justify-self-end justify-end mr-3 h-screen text-center font-dotoBold text-black dark:text-white text-md z-5">
+      <div className="lg:flex lg:w-35 absolute justify-self-end justify-end mr-3 lg:h-screen text-center font-dotoBold text-black dark:text-white text-md z-5">
         <div className="mt-2">
           {/*Right Icon Container*/}
           <div>

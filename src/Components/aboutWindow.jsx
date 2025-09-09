@@ -31,7 +31,7 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
         aboutOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >
-      <div className="absolute shrink bg-windowBox dark:bg-darkModeWindow mb-30 w-120 h-90 lg:w-205 lg:h-130 dark:drop-shadow-white drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 dark:outline-white outline-black z-100">
+      <div className="absolute shrink bg-windowBox dark:bg-darkModeWindow not-lg:mb-45 lg:mb-30 w-145 h-110 lg:w-205 lg:h-130 dark:drop-shadow-white drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 dark:outline-white outline-black z-100">
         {/*Change color to whatever works*/}
         <div className="flex w-full items-center bg-siteGreen h-12 lg:h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2 dark:bg-darkModeGreen dark:outline-white">
           <h1 className="text-3xl font-dotoBold text-white ml-4 mb-0.5">
@@ -39,7 +39,7 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
           </h1>
           <button
             onClick={aboutOnClose}
-            className="mr-2 max-w-15 max-h-10 justify-items-center text-center hover:bg-black/20"
+            className="mr-2 mt-1 max-w-15 max-h-10 justify-items-center text-center hover:bg-black/20"
           >
             <h1 className="cursor-pointer pl-4 group-hover:select-none text-3xl font-dotoBold text-white self-center justify-self-center mb-1 mr-3">
               &#91;X&#93;
@@ -47,7 +47,7 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
           </button>
         </div>
         {/*Introduction of About Window*/}
-        <div className="flex flex-col justify-center h-78 lg:h-115 max-w-full max-h-115 text-wrap wrap-anywhere dark:text-white dark:text-shadow-white/30 text-shadow-md">
+        <div className="flex flex-col justify-center h-98 lg:h-115 max-w-full max-h-115 text-wrap wrap-anywhere dark:text-white dark:text-shadow-white/30 text-shadow-md">
           <div
             className={`flex font-outfit text-black items-center transition-all duration-300 ease-in-out dark:text-white ${
               isShrunk
@@ -60,8 +60,8 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
               alt="Photo of me!!!1!"
               className={`outline-green-700 dark:outline-green-500 outline-solid justify-self-center self-center rounded-full transition-all duration-300 ease-in-out ${
                 isShrunk
-                  ? "w-20 lg:w-30 mt-2 outline-3"
-                  : "w-25 lg:w-40 lg:outline-5"
+                  ? "w-20 lg:w-30 not-lg:ml-4 mt-6 lg:mt-2 outline-3"
+                  : "w-25 lg:w-40 not-lg:ml-4 not-lg:mt-3 lg:outline-5"
               }`}
             />
             <div
@@ -70,8 +70,8 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
               <h1
                 className={`leading-tight text-green-700 dark:text-green-500 transition-all duration-300 ease-in-out ${
                   isShrunk
-                    ? "text-[2.5rem] lg:text-[3.9rem] mt-3 lg:mt-1"
-                    : "text-[2.5rem] lg:text-[3.9rem]"
+                    ? "text-[3rem] mr-1 lg:text-[3.9rem] mt-5 lg:mt-2"
+                    : "text-[2.7rem] lg:text-[3.9rem]"
                 }`}
               >
                 Nathan Lomnicky
@@ -80,7 +80,7 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
                 className={`transition-all duration-300 ease-in-out ${
                   isShrunk
                     ? "text-[0rem] opacity-0"
-                    : "text-[1rem] lg:text-[1.5rem] opacity-100"
+                    : "text-[1.2rem] lg:text-[1.5rem] opacity-100"
                 }`}
               >
                 <h2 className="font-outfitMedium">
@@ -102,7 +102,7 @@ export default function AboutWindow({ aboutOpen, aboutOnClose }) {
           {/*Summary*/}
           <div
             ref={scrollableBodyRef}
-            className="overflow-y-auto flex-grow text-[1.1rem] lg:text-[1.44rem] flex-col justify-between font-outfit ml-16"
+            className="overflow-y-auto flex-grow text-[1.15rem] lg:text-[1.44rem] flex-col justify-between font-outfit ml-16"
           >
             <div className="mt-6 mb-10 lg:mb-20 mr-7">
               <h1>

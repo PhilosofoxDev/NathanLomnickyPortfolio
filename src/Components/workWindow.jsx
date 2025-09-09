@@ -5,7 +5,7 @@ import BedmimeImage from "../assets/images/BedmimeTitle.webp";
 import StormchaserImage from "../assets/images/StormchaserCover.webp";
 import WebsiteImage from "../assets/images/WebsiteImage.webp";
 import BlenderImage from "../assets/images/BlenderCollectionForWebsite.webp";
-import ChannelsImage from "../assets/images/WebsiteImage.webp";
+import ChannelsImage from "../assets/images/ChannelLogoCollection.png";
 import WorkTile from "./workTile";
 
 export default function WorkWindow({ workOpen, workOnClose }) {
@@ -19,7 +19,7 @@ export default function WorkWindow({ workOpen, workOnClose }) {
         workOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >
-      <div className="absolute shrink bg-windowBox dark:bg-darkModeWindow mb-15 w-120 h-90 lg:w-205 lg:h-130 dark:drop-shadow-white drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 dark:outline-white outline-black z-100">
+      <div className="absolute shrink bg-windowBox dark:bg-darkModeWindow not-lg:mb-45 lg:mb-15 w-145 h-110 lg:w-205 lg:h-130 dark:drop-shadow-white drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 dark:outline-white outline-black z-100">
         {/*Change color to whatever works*/}
         <div className="flex w-full items-center bg-siteGreen h-12 lg:h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2 dark:bg-darkModeGreen dark:outline-white">
           <h1 className="text-3xl font-dotoBold text-white ml-4 mb-0.5">
@@ -27,22 +27,22 @@ export default function WorkWindow({ workOpen, workOnClose }) {
           </h1>
           <button
             onClick={workOnClose}
-            className="mr-3 lg:mt-3 max-w-15 max-h-10 justify-items-center text-center hover:bg-black/20"
+            className="mr-2 mt-1 max-w-15 max-h-10 justify-items-center text-center hover:bg-black/20"
           >
             <h1 className="cursor-pointer pl-4 group-hover:select-none text-3xl font-dotoBold text-white self-center justify-self-center mb-1 mr-3">
               &#91;X&#93;
             </h1>
           </button>
         </div>
-        <div className="text-black dark:text-white flex flex-col justify-start h-78 lg:h-115 max-w-full max-h-115 text-wrap overflow-y-auto wrap-anywhere">
+        <div className="text-black dark:text-white flex flex-col justify-start h-98 lg:h-115 max-w-full max-h-115 text-wrap overflow-y-auto wrap-anywhere">
           <div className={`self-center mt-2`}>
             <h1
-              className={`font-outfit text-[2.1rem] lg:text-[3.5rem] dark:text-shadow-white/30 text-shadow-md`}
+              className={`font-outfit text-[3rem] lg:text-[3.5rem] dark:text-shadow-white/30 text-shadow-md`}
             >
               Things I've made!
             </h1>
           </div>
-          <hr className="stroke-black opacity-20" />
+          <hr className="stroke-black opacity-20 dark:text-white dark:opacity-60" />
 
           <div
             className={`overflow-y-auto font-outfit text-2xl pl-10 pr-10 pb-20 pt-5`}
@@ -56,7 +56,7 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                   setGamesOpen(!gamesOpen);
                 }}
               >
-                <div className="flex gap-1 text-[1rem] lg:text-[1.5rem] items-center dark:text-shadow-white/30 text-shadow-md">
+                <div className="flex gap-1 text-[1.3rem] lg:text-[1.5rem] items-center dark:text-shadow-white/30 text-shadow-md">
                   Games
                   <Chevron direction={`${gamesOpen ? "up" : "down"}`} />
                 </div>
@@ -143,7 +143,7 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                     setProjectsOpen(!projectsOpen);
                   }}
                 >
-                  <div className="flex gap-1 text-[1rem] lg:text-[1.5rem] items-center dark:text-shadow-white/30 text-shadow-md">
+                  <div className="flex gap-1 text-[1.3rem] lg:text-[1.5rem] items-center dark:text-shadow-white/30 text-shadow-md">
                     Dev Projects
                     <Chevron direction={`${projectsOpen ? "up" : "down"}`} />
                   </div>
@@ -195,7 +195,7 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                     setOtherOpen(!otherOpen);
                   }}
                 >
-                  <div className="flex gap-1 text-[1rem] lg:text-[1.5rem] items-center dark:text-shadow-white/30 text-shadow-md">
+                  <div className="flex gap-1 text-[1.3rem] lg:text-[1.5rem] items-center dark:text-shadow-white/30 text-shadow-md">
                     Other Stuff
                     <Chevron direction={`${otherOpen ? "up" : "down"}`} />
                   </div>
@@ -256,8 +256,8 @@ export default function WorkWindow({ workOpen, workOnClose }) {
                     >
                       <div className={`flex align-middle self-center m-4`}>
                         <img
-                          src={BlenderImage}
-                          alt="Blender Project Images"
+                          src={ChannelsImage}
+                          alt="Channels Images"
                           loading="lazy"
                           className={`self-center outline-5 max-w-31/64 outline-siteGreen dark:outline-darkModeGreen`}
                         />
