@@ -11,7 +11,7 @@ export default function Window({ homeOpen, homeOnClose }) {
         homeOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >
-      <div className="absolute shrink bg-windowBox dark:bg-darkModeWindow mb-45 w-145 h-110 lg:w-205 lg:h-130 dark:drop-shadow-white drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 dark:outline-white outline-black z-100">
+      <div className="absolute shrink bg-windowBox dark:bg-darkModeWindow mb-45 w-145 h-105 lg:w-205 lg:h-130 dark:drop-shadow-white drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 dark:outline-white outline-black z-100">
         {/*Change color to whatever works*/}
         <div className="flex w-full items-center bg-siteGreen h-12 lg:h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2 dark:bg-darkModeGreen dark:outline-white">
           <h1 className="text-3xl font-dotoBold text-white ml-4 mb-0.5">

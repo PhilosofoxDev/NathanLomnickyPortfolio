@@ -12,7 +12,7 @@ export default function MiscWindow({ miscOpen, miscOnClose }) {
         miscOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >
-      <div className="absolute shrink bg-windowBox dark:bg-darkModeWindow not-lg:mb-45 lg:mt-15 w-145 h-110 lg:w-205 lg:h-130 dark:drop-shadow-white drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 dark:outline-white outline-black z-100">
+      <div className="absolute shrink bg-windowBox dark:bg-darkModeWindow not-lg:mb-45 lg:mt-15 w-145 h-105 lg:w-205 lg:h-130 dark:drop-shadow-white drop-shadow-2xl/20 rounded-sm self-center justify-self-center outline-2 dark:outline-white outline-black z-100">
         {/*Change color to whatever works*/}
         <div className="flex w-full items-center bg-siteGreen h-12 lg:h-15 rounded-t-sm justify-between drop-shadow-lg/25 outline-2 dark:bg-darkModeGreen dark:outline-white">
           <h1 className="text-3xl font-dotoBold text-white ml-4 mb-0.5">
@@ -27,7 +27,7 @@ export default function MiscWindow({ miscOpen, miscOnClose }) {
             </h1>
           </button>
         </div>
-        <div className="flex flex-col justify-center max-w-full h-98 lg:h-115 max-h-115 text-wrap overflow-y-auto wrap-anywhere dark:text-white dark:text-shadow-white/30 text-shadow-md">
+        <div className="flex flex-col justify-center max-w-full h-93 lg:h-115 max-h-115 text-wrap overflow-y-auto wrap-anywhere dark:text-white dark:text-shadow-white/30 text-shadow-md">
           <div className={`text-center`}>
             <h1 className={`font-outfit text-[2.47rem] lg:text-[3.5rem]`}>
               Fun stuff! :D
@@ -88,7 +88,7 @@ export default function MiscWindow({ miscOpen, miscOnClose }) {
               <h1 className="font-outfitMedium text-black dark:text-white lg:text-4xl ml-5">
                 More to come!
               </h1>
-              <h1 className="text-[.9rem] lg:text-[1.1rem] ml-6 mr-4 mt-4">
+              <h1 className="text-[1rem] lg:text-[1.1rem] ml-6 mr-4 mt-4">
                 Always making new stuff and thinking new things!
               </h1>
               <div className="mt-3 grid grid-cols-2 justify-items-center mb-5"></div>
